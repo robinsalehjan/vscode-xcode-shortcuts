@@ -1,0 +1,226 @@
+{
+  "name": "xcode-vscode-shortcuts",
+  "displayName": "Xcode Shortcuts",
+  "description": "Xcode keyboard shortcuts for Visual Studio Code",
+  "version": "1.0.0",
+  "publisher": "robinsalehjan",
+  "homepage": "https://github.com/robinsalehjan/vscode-xcode-shortcuts/#readme",
+  "engines": {
+    "vscode": "^1.6.0"
+  },
+  "categories": [
+    "Keymaps"
+  ],
+  "keywords": [
+    "Keymap",
+    "Keybinding",
+    "Shortcuts",
+    "Hotkeys",
+    "Xcode",
+    "Mac",
+    "Swift",
+    "ObjC",
+    "Apple"
+  ],
+  "repository": {
+    "type": "https",
+    "url": "https://github.com/robinsalehjan/vscode-xcode-shortcuts"
+  },
+  "bugs": {
+    "url": "https://github.com/robinsalehjan/vscode-xcode-shortcuts/issues"
+  },
+  "preview": true,
+  "icon": "icon.png",
+  "contributes": {
+    "keybindings": [
+      {
+        "key": "cmd+e",
+        "command": "editor.action.addSelectionToNextFindMatch"
+      },
+      {
+        "key": "cmd+shift+j",
+        "command": "workbench.files.action.showActiveFileInExplorer"
+      },
+      {
+        "key": "cmd+ctrl+up",
+        "command": "C_Cpp.SwitchHeaderSource"
+      },
+      {
+        "key": "shift+cmd+]",
+        "command": "workbench.action.nextEditor"
+      },
+      {
+        "key": "shift+cmd+[",
+        "command": "workbench.action.previousEditor"
+      },
+      {
+        "key": "cmd+shift+y",
+        "command": "workbench.action.togglePanel"
+      },
+      {
+        "key": "cmd+shift+o",
+        "command": "workbench.action.quickOpen"
+      },
+      {
+        "key": "ctrl+cmd+left",
+        "command": "workbench.action.navigateBack"
+      },
+      {
+        "key": "ctrl+cmd+right",
+        "command": "workbench.action.navigateForward"
+      },
+      {
+        "key": "cmd+1",
+        "command": "workbench.view.explorer"
+      },
+      {
+        "key": "cmd+2",
+        "command": "workbench.view.search"
+      },
+      {
+        "key": "cmd+3",
+        "command": "workbench.view.scm"
+      },
+      {
+        "key": "cmd+4",
+        "command": "workbench.view.debug"
+      },
+      {
+        "key": "cmd+5",
+        "command": "workbench.view.extensions"
+      },
+      {
+        "key": "cmd+r",
+        "command": "workbench.action.debug.start",
+        "when": "!inDebugMode"
+      },
+      {
+        "key": "cmd+r",
+        "command": "workbench.action.debug.restart",
+        "when": "inDebugMode"
+      },
+      {
+        "key": "cmd+.",
+        "command": "workbench.action.debug.stop",
+        "when": "inDebugMode"
+      },
+      {
+        "key": "cmd+b",
+        "command": "workbench.action.tasks.build"
+      },
+      {
+        "key": "cmd+u",
+        "command": "workbench.action.tasks.test"
+      },
+      {
+        "key": "cmd+0",
+        "command": "workbench.action.toggleSidebarVisibility"
+      },
+      {
+        "key": "ctrl+right",
+        "command": "cursorWordPartRight",
+        "when": "textInputFocus"
+      },
+      {
+        "key": "shift+ctrl+right",
+        "command": "cursorWordPartRightSelect",
+        "when": "textInputFocus"
+      },
+      {
+        "key": "ctrl+left",
+        "command": "cursorWordPartStartLeft",
+        "when": "textInputFocus"
+      },
+      {
+        "key": "shift+ctrl+left",
+        "command": "cursorWordPartStartLeftSelect",
+        "when": "textInputFocus"
+      },
+      {
+        "key": "ctrl+backspace",
+        "command": "deleteWordPartLeft",
+        "when": "textInputFocus && !editorReadonly"
+      },
+      {
+        "key": "shift+ctrl+backspace",
+        "command": "deleteWordPartRight",
+        "when": "textInputFocus && !editorReadonly"
+      },
+      {
+        "key": "alt+cmd+left",
+        "command": "editor.fold"
+      },
+      {
+        "key": "alt+cmd+right",
+        "command": "editor.unfold"
+      },
+      {
+        "key": "alt+cmd+[",
+        "command": "editor.action.moveLinesUpAction"
+      },
+      {
+        "key": "alt+cmd+]",
+        "command": "editor.action.moveLinesDownAction"
+      },
+      {
+        "key": "alt+up",
+        "command": "cursorHome",
+        "when": "textInputFocus"
+      },
+      {
+        "key": "alt+down",
+        "command": "cursorEnd",
+        "when": "textInputFocus"
+      },
+      {
+        "key": "ctrl+cmd+e",
+        "command": "editor.action.changeAll",
+        "when": "editorTextFocus && !editorReadonly"
+      },
+      {
+        "key": "enter",
+        "command": "acceptSelectedSuggestion",
+        "when": "editorTextFocus && suggestWidgetVisible"
+      },
+      {
+        "key": "ctrl+shift+up",
+        "command": "editor.action.insertCursorAbove",
+        "when": "editorTextFocus"
+      },
+      {
+        "key": "ctrl+shift+down",
+        "command": "editor.action.insertCursorBelow",
+        "when": "editorTextFocus"
+      },
+      {
+        "key": "cmd+l",
+        "command": "workbench.action.gotoLine",
+        "when": "textInputFocus"
+      },
+      {
+        "key": "cmd+d",
+        "command": "editor.action.duplicateSelection",
+        "when": "editorTextFocus"
+      },
+      {
+        "key": "ctrl+i",
+        "command": "editor.action.reindentselectedlines",
+        "when": "editorTextFocus"
+      },
+      {
+        "key": "ctrl+cmd+j",
+        "command": "editor.action.revealDefinition",
+        "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
+      }
+    ]
+  },
+  "scripts": {
+    "postinstall": "node ./node_modules/vscode/bin/install"
+  },
+  "devDependencies": {
+    "vscode": "^1.0.0"
+  },
+  "dependencies": {
+    "jsonfile": "^5.0.0"
+  }
+}
