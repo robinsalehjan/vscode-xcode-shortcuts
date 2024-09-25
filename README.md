@@ -74,6 +74,6 @@ Feel free to contribute by creating a PR 😍
         }
     ```
 
-    You can read more about what VSCode commands are available to you here [here](https://code.visualstudio.com/docs/getstarted/keybindings#_basic-editing)
+    You can read more about what VSCode commands are available to you [here](https://code.visualstudio.com/docs/getstarted/keybindings#_basic-editing)
 
 4. Open a pull request.
