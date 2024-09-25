@@ -3,7 +3,7 @@ on:
     tags:
       - "*"
 
-name: Publishing a new release of the extension to Visual Studio Marketplace
+name: Publishing a new release to Visual Studio Marketplace
 jobs:
   deploy:
     runs-on: ubuntu-latest
