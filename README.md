@@ -1,3 +1,10 @@
+<div align=center>
+  <img src="https://github.com/robinsalehjan/vscode-xcode-shortcuts/blob/main/icon.png" 
+     alt="icon"
+     height=200 
+     width=200>
+</div>
+
 # Xcode shortcuts for VSCode
 
 This extension adds your favorite Xcode keyboard shortcuts to Visual Studio Code!
