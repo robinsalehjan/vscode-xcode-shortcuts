@@ -2,7 +2,7 @@
   "name": "xcode-vscode-shortcuts",
   "displayName": "Xcode Shortcuts",
   "description": "Xcode keyboard shortcuts for Visual Studio Code",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "publisher": "robinsalehjan",
   "homepage": "https://github.com/robinsalehjan/vscode-xcode-shortcuts/#readme",
   "engines": {
