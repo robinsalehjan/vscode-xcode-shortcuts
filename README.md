@@ -1,11 +1,15 @@
-<div align=center>
-  <img src="https://github.com/robinsalehjan/vscode-xcode-shortcuts/blob/main/icon.png" 
+<div style="text-align: center;">
+  <img src="https://github.com/robinsalehjan/vscode-xcode-shortcuts/blob/main/icon.png"
      alt="icon"
-     height=200 
-     width=200>
+     height="200"
+     width="200">
 </div>
 
 # Xcode shortcuts for VSCode
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/robinsalehjan/vscode-xcode-shortcuts/publish-extension-from-tag.yml)
+![GitHub License](https://img.shields.io/github/license/robinsalehjan/vscode-xcode-shortcuts)
+![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/robinsalehjan.xcode-vscode-shortcuts)
+![GitHub Release](https://img.shields.io/github/v/release/robinsalehjan/vscode-xcode-shortcuts)
 
 This extension adds your favorite Xcode keyboard shortcuts to Visual Studio Code!
 
