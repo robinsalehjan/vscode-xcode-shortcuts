@@ -1,10 +1,3 @@
-<div style="text-align: center;">
-  <img src="https://github.com/robinsalehjan/vscode-xcode-shortcuts/blob/main/icon.png"
-     alt="icon"
-     height="200"
-     width="200">
-</div>
-
 # Xcode shortcuts for VSCode
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/robinsalehjan/vscode-xcode-shortcuts/publish-extension-from-tag.yml)
 ![GitHub License](https://img.shields.io/github/license/robinsalehjan/vscode-xcode-shortcuts)
