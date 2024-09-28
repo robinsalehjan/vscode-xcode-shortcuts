@@ -48,7 +48,7 @@ This extension adds your favorite Xcode keyboard shortcuts to Visual Studio Code
 | `ctrl+shift+down`| Insert cursor below (when editor has focus)                     | `editor.action.insertCursorBelow`                    |
 | `cmd+l`         | Go to specific line (when text input has focus)                 | `workbench.action.gotoLine`                          |
 | `cmd+d`         | Duplicate selection (when editor has focus)                     | `editor.action.duplicateSelection`                   |
-| `ctrl+i`        | Reindent selected lines (when editor has focus)                 | `editor.action.reindentselectedlines`                |
+| `ctrl+i`        | Reindent selected lines (when editor has focus and support for the language)                 | `editor.action.reindentselectedlines`                |
 | `ctrl+cmd+j`    | Reveal definition (when editor has definition provider and focus)| `editor.action.revealDefinition`                     |
 
 ## Is your favorite shortcut missing?
