@@ -12,12 +12,17 @@
     "Keymaps"
   ],
   "keywords": [
-    "Keybindings",
-    "Keymap",
-    "Hotkeys",
-    "Xcode",
-    "Apple"
+    "keybindings",
+    "keymap",
+    "hotkeys",
+    "xcode",
+    "apple"
   ],
+  "extensionKind": [
+    "ui",
+    "workspace"
+  ],
+  "preview": true,
   "repository": {
     "type": "https",
     "url": "https://github.com/robinsalehjan/vscode-xcode-shortcuts"
@@ -25,7 +30,6 @@
   "bugs": {
     "url": "https://github.com/robinsalehjan/vscode-xcode-shortcuts/issues"
   },
-  "preview": true,
   "icon": "icon.png",
   "contributes": {
     "keybindings": [
