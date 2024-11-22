@@ -1,4 +1,4 @@
-# [Xcode shortcuts for VSCode]([url](https://marketplace.visualstudio.com/items?itemName=robinsalehjan.xcode-vscode-shortcuts))
+# [Xcode shortcuts for VSCode](https://marketplace.visualstudio.com/items?itemName=robinsalehjan.xcode-vscode-shortcuts)
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/robinsalehjan/vscode-xcode-shortcuts/publish-extension-from-tag.yml)
 ![GitHub License](https://img.shields.io/github/license/robinsalehjan/vscode-xcode-shortcuts)
 ![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/robinsalehjan.xcode-vscode-shortcuts)
