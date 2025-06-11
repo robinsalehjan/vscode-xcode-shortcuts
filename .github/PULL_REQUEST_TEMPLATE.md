@@ -1,5 +1,3 @@
-# Pull Request
-
 ## 🚀 What does this PR do?
 _A short description of what your PR changes_
 
