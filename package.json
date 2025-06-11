@@ -76,28 +76,23 @@
       },
       {
         "key": "cmd+1",
-        "command": "workbench.view.explorer",
-        "when": "editorTextFocus"
+        "command": "workbench.view.explorer"
       },
       {
         "key": "cmd+2",
-        "command": "workbench.view.search",
-        "when": "editorTextFocus"
+        "command": "workbench.view.search"
       },
       {
         "key": "cmd+3",
-        "command": "workbench.view.scm",
-        "when": "editorTextFocus"
+        "command": "workbench.view.scm"
       },
       {
         "key": "cmd+4",
-        "command": "workbench.view.debug",
-        "when": "editorTextFocus"
+        "command": "workbench.view.debug"
       },
       {
         "key": "cmd+5",
-        "command": "workbench.view.extensions",
-        "when": "editorTextFocus"
+        "command": "workbench.view.extensions"
       },
       {
         "key": "cmd+r",
