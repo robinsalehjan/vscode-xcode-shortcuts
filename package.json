@@ -43,23 +43,28 @@
       },
       {
         "key": "cmd+ctrl+up",
-        "command": "C_Cpp.SwitchHeaderSource"
+        "command": "C_Cpp.SwitchHeaderSource",
+        "when": "editorTextFocus && editorLangId == 'cpp' || editorLangId == 'c'"
       },
       {
         "key": "shift+cmd+]",
-        "command": "workbench.action.nextEditor"
+        "command": "workbench.action.nextEditor",
+        "when": "editorTextFocus"
       },
       {
         "key": "shift+cmd+[",
-        "command": "workbench.action.previousEditor"
+        "command": "workbench.action.previousEditor",
+        "when": "editorTextFocus"
       },
       {
         "key": "cmd+shift+y",
-        "command": "workbench.action.togglePanel"
+        "command": "workbench.action.togglePanel",
+        "when": "editorTextFocus"
       },
       {
         "key": "cmd+shift+o",
-        "command": "workbench.action.quickOpen"
+        "command": "workbench.action.quickOpen",
+        "when": "editorTextFocus"
       },
       {
         "key": "ctrl+cmd+left",
@@ -71,23 +76,28 @@
       },
       {
         "key": "cmd+1",
-        "command": "workbench.view.explorer"
+        "command": "workbench.view.explorer",
+        "when": "editorTextFocus"
       },
       {
         "key": "cmd+2",
-        "command": "workbench.view.search"
+        "command": "workbench.view.search",
+        "when": "editorTextFocus"
       },
       {
         "key": "cmd+3",
-        "command": "workbench.view.scm"
+        "command": "workbench.view.scm",
+        "when": "editorTextFocus"
       },
       {
         "key": "cmd+4",
-        "command": "workbench.view.debug"
+        "command": "workbench.view.debug",
+        "when": "editorTextFocus"
       },
       {
         "key": "cmd+5",
-        "command": "workbench.view.extensions"
+        "command": "workbench.view.extensions",
+        "when": "editorTextFocus"
       },
       {
         "key": "cmd+r",
@@ -106,15 +116,18 @@
       },
       {
         "key": "cmd+b",
-        "command": "workbench.action.tasks.build"
+        "command": "workbench.action.tasks.build",
+        "when": "editorTextFocus"
       },
       {
         "key": "cmd+u",
-        "command": "workbench.action.tasks.test"
+        "command": "workbench.action.tasks.test",
+        "when": "editorTextFocus"
       },
       {
         "key": "cmd+0",
-        "command": "workbench.action.toggleSidebarVisibility"
+        "command": "workbench.action.toggleSidebarVisibility",
+        "when": "editorTextFocus"
       },
       {
         "key": "ctrl+right",
@@ -148,19 +161,23 @@
       },
       {
         "key": "alt+cmd+left",
-        "command": "editor.fold"
+        "command": "editor.fold",
+        "when": "editorTextFocus"
       },
       {
         "key": "alt+cmd+right",
-        "command": "editor.unfold"
+        "command": "editor.unfold",
+        "when": "editorTextFocus"
       },
       {
         "key": "alt+cmd+[",
-        "command": "editor.action.moveLinesUpAction"
+        "command": "editor.action.moveLinesUpAction",
+        "when": "editorTextFocus"
       },
       {
         "key": "alt+cmd+]",
-        "command": "editor.action.moveLinesDownAction"
+        "command": "editor.action.moveLinesDownAction",
+        "when": "editorTextFocus"
       },
       {
         "key": "alt+up",
