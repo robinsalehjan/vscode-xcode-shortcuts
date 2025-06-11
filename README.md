@@ -6,9 +6,17 @@
 
 This extension adds your favorite `Xcode` keyboard shortcuts to Visual Studio Code!
 
-## Shortcuts
+## Request
+### 🐛 [Found a bug](https://github.com/robinsalehjan/vscode-xcode-shortcuts/issues/new?assignees=&labels=bug&template=bug_report.md&title=)
 
-| Key           | Description                                                    | Command                                            |
+### 💘 [Missing a shortcut](https://github.com/robinsalehjan/vscode-xcode-shortcuts/issues/new?assignees=&labels=feature+request&template=feature_request.md&title=)
+
+## Contribute
+### 💡 [How to create a new shortcut](docs/HOW-TO-CREATE-NEW-SHORTCUT.md)
+
+##
+
+| Shortcut           | Description                                                    | Command                                            |
 |---------------|----------------------------------------------------------------|----------------------------------------------------|
 | `cmd+e`         | Add selection to next find match                               | `editor.action.addSelectionToNextFindMatch`          |
 | `cmd+shift+j`   | Show active file in explorer                                   | `workbench.files.action.showActiveFileInExplorer`     |
@@ -50,34 +58,3 @@ This extension adds your favorite `Xcode` keyboard shortcuts to Visual Studio Co
 | `cmd+d`         | Duplicate selection (when editor has focus)                     | `editor.action.duplicateSelection`                   |
 | `ctrl+i`        | Reindent selected lines (when editor has focus and support for the language)                 | `editor.action.reindentselectedlines`                |
 | `ctrl+cmd+j`    | Reveal definition (when editor has definition provider and focus)| `editor.action.revealDefinition`                     |
-
-## Is your favorite shortcut missing?
-
-Feel free to contribute by creating a pull request!
-
-1. Go to [GitHub repository](https://github.com/robinsalehjan/vscode-xcode-shortcuts)
-
-2. Open [`package.json`](https://github.com/robinsalehjan/vscode-xcode-shortcuts/blob/master/package.json)
-
-3. Scroll down to `contributes.keybindings`
-    ```
-        {
-                "contributes": {
-                    "keybindings": [
-                        ...
-                    ]
-                }
-
-        }
-    ```
-4. Add your shortcut to `contributes.keybindings` for example:
-    ```
-        {
-            "key": "command+my-awesome-hotkey",
-            "command": "editor.action.addSelectionToNextFindMatch"
-        }
-    ```
-
-    You can read more about what VSCode commands are available to you [here](https://code.visualstudio.com/docs/getstarted/keybindings#_basic-editing)
-
-4. Open a pull request.
