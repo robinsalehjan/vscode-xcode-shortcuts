@@ -16,45 +16,45 @@ This extension adds your favorite `Xcode` keyboard shortcuts to Visual Studio Co
 
 ##
 
-| Shortcut           | Description                                                    | Command                                            |
-|---------------|----------------------------------------------------------------|----------------------------------------------------|
-| `cmd+e`         | Add selection to next find match                               | `editor.action.addSelectionToNextFindMatch`          |
-| `cmd+shift+j`   | Show active file in explorer                                   | `workbench.files.action.showActiveFileInExplorer`     |
-| `cmd+ctrl+up`   | Switch between header and source file                          | `C_Cpp.SwitchHeaderSource`                           |
-| `shift+cmd+]`   | Move to next editor                                            | `workbench.action.nextEditor`                       |
-| `shift+cmd+[`   | Move to previous editor                                        | `workbench.action.previousEditor`                    |
-| `cmd+shift+y`   | Toggle panel visibility                                        | `workbench.action.togglePanel`                       |
-| `cmd+shift+o`   | Quick open files or commands                                   | `workbench.action.quickOpen`                         |
-| `ctrl+cmd+left` | Navigate back                                                  | `workbench.action.navigateBack`                      |
-| `ctrl+cmd+right`| Navigate forward                                               | `workbench.action.navigateForward`                   |
-| `cmd+1`         | Open Explorer view                                             | `workbench.view.explorer`                            |
-| `cmd+2`         | Open Search view                                               | `workbench.view.search`                              |
-| `cmd+3`        | Open Source Control view                                       | `workbench.view.scm`                                 |
-| `cmd+4`         | Open Debug view                                                | `workbench.view.debug`                               |
-| `cmd+5`         | Open Extensions view                                           | `workbench.view.extensions`                          |
-| `cmd+r`         | Start debug (when not in debug mode)                           | `workbench.action.debug.start`                       |
-| `cmd+r`         | Restart debug (when in debug mode)                             | `workbench.action.debug.restart`                     |
-| `cmd+.`         | Stop debug (when in debug mode)                                | `workbench.action.debug.stop`                        |
-| `cmd+b`         | Run build task                                                 | `workbench.action.tasks.build`                       |
-| `cmd+u`         | Run test task                                                  | `workbench.action.tasks.test`                        |
-| `cmd+0`         | Toggle sidebar visibility                                      | `workbench.action.toggleSidebarVisibility`           |
-| `ctrl+right`    | Move cursor word part right (when text input has focus)         | `cursorWordPartRight`                                |
-| `shift+ctrl+right`| Select word part right (when text input has focus)             | `cursorWordPartRightSelect`                          |
-| `ctrl+left`     | Move cursor word part start left (when text input has focus)    | `cursorWordPartStartLeft`                            |
-| `shift+ctrl+left`| Select word part start left (when text input has focus)         | `cursorWordPartStartLeftSelect`                      |
-| `ctrl+backspace`| Delete word part left (when text input has focus and editor is not readonly) | `deleteWordPartLeft`                                 |
-| `shift+ctrl+backspace`| Delete word part right (when text input has focus and editor is not readonly) | `deleteWordPartRight`                          |
-| `alt+cmd+left`  | Fold code                                                      | `editor.fold`                                        |
-| `alt+cmd+right` | Unfold code                                                    | `editor.unfold`                                      |
-| `alt+cmd+[`     | Move lines up                                                  | `editor.action.moveLinesUpAction`                    |
-| `alt+cmd+]`     | Move lines down                                                | `editor.action.moveLinesDownAction`                  |
-| `alt+up`        | Move cursor to start of line (when text input has focus)        | `cursorHome`                                         |
-| `alt+down`      | Move cursor to end of line (when text input has focus)          | `cursorEnd`                                          |
-| `ctrl+cmd+e`    | Change all occurrences (when editor has focus and is not readonly) | `editor.action.changeAll`                            |
-| `enter`         | Accept selected suggestion (when suggestion widget is visible and editor has focus) | `acceptSelectedSuggestion`               |
-| `ctrl+shift+up` | Insert cursor above (when editor has focus)                     | `editor.action.insertCursorAbove`                    |
-| `ctrl+shift+down`| Insert cursor below (when editor has focus)                     | `editor.action.insertCursorBelow`                    |
-| `cmd+l`         | Go to specific line (when text input has focus)                 | `workbench.action.gotoLine`                          |
-| `cmd+d`         | Duplicate selection (when editor has focus)                     | `editor.action.duplicateSelection`                   |
-| `ctrl+i`        | Reindent selected lines (when editor has focus and support for the language)                 | `editor.action.reindentselectedlines`                |
-| `ctrl+cmd+j`    | Reveal definition (when editor has definition provider and focus)| `editor.action.revealDefinition`                     |
+| Shortcut             | Mac             | Win              | Linux            | Command                                             | Description                                                                 |
+|----------------------|-----------------|------------------|------------------|-----------------------------------------------------|-----------------------------------------------------------------------------|
+| `cmd+e`              | `cmd+e`         | `ctrl+e`         | `ctrl+e`         | `editor.action.addSelectionToNextFindMatch`         | Add selection to next find match                                            |
+| `cmd+shift+j`        | `cmd+shift+j`   | `ctrl+shift+j`   | `ctrl+shift+j`   | `workbench.files.action.showActiveFileInExplorer`   | Show active file in explorer                                                |
+| `cmd+ctrl+up`        | `cmd+ctrl+up`   | `ctrl+win+up`    | `ctrl+super+up`  | `C_Cpp.SwitchHeaderSource`                         | Switch between header and source file                                       |
+| `shift+cmd+]`        | `shift+cmd+]`   | `shift+ctrl+]`   | `shift+ctrl+]`   | `workbench.action.nextEditor`                      | Move to next editor                                                         |
+| `shift+cmd+[`        | `shift+cmd+[`   | `shift+ctrl+[`   | `shift+ctrl+[`   | `workbench.action.previousEditor`                  | Move to previous editor                                                     |
+| `cmd+shift+y`        | `cmd+shift+y`   | `ctrl+shift+y`   | `ctrl+shift+y`   | `workbench.action.togglePanel`                     | Toggle panel visibility                                                     |
+| `cmd+shift+o`        | `cmd+shift+o`   | `ctrl+shift+o`   | `ctrl+shift+o`   | `workbench.action.quickOpen`                       | Quick open files or commands                                                |
+| `cmd+ctrl+left`      | `cmd+ctrl+left` | `ctrl+win+left`  | `ctrl+super+left`| `workbench.action.navigateBack`                    | Navigate back                                                               |
+| `cmd+ctrl+right`     | `cmd+ctrl+right`| `win+ctrl+right` | `super+ctrl+right`| `workbench.action.navigateForward`                 | Navigate forward                                                            |
+| `cmd+1`              | `cmd+1`         | `ctrl+1`         | `ctrl+1`         | `workbench.view.explorer`                          | Open Explorer view                                                          |
+| `cmd+2`              | `cmd+2`         | `ctrl+2`         | `ctrl+2`         | `workbench.view.search`                            | Open Search view                                                            |
+| `cmd+3`              | `cmd+3`         | `ctrl+3`         | `ctrl+3`         | `workbench.view.scm`                               | Open Source Control view                                                    |
+| `cmd+4`              | `cmd+4`         | `ctrl+4`         | `ctrl+4`         | `workbench.view.debug`                             | Open Debug view                                                             |
+| `cmd+5`              | `cmd+5`         | `ctrl+5`         | `ctrl+5`         | `workbench.view.extensions`                        | Open Extensions view                                                        |
+| `cmd+r`              | `cmd+r`         | `ctrl+r`         | `ctrl+r`         | `workbench.action.debug.start`                     | Start debug (when not in debug mode)                                        |
+| `cmd+r`              | `cmd+r`         | `ctrl+r`         | `ctrl+r`         | `workbench.action.debug.restart`                   | Restart debug (when in debug mode)                                          |
+| `cmd+.`              | `cmd+.`         | `ctrl+.`         | `ctrl+.`         | `workbench.action.debug.stop`                      | Stop debug (when in debug mode)                                             |
+| `cmd+b`              | `cmd+b`         |                  |                  | `workbench.action.tasks.build`                     | Run build task                                                              |
+| `cmd+u`              | `cmd+u`         |                  |                  | `workbench.action.tasks.test`                      | Run test task                                                               |
+| `cmd+0`              | `cmd+0`         |                  |                  | `workbench.action.toggleSidebarVisibility`         | Toggle sidebar visibility                                                   |
+| `ctrl+right`         | `ctrl+right`    | `win+right`      | `super+right`    | `cursorWordPartRight`                              | Move cursor word part right (when text input has focus)                     |
+| `shift+ctrl+right`   | `shift+ctrl+right`| `shift+win+right`| `shift+super+right`| `cursorWordPartRightSelect`                    | Select word part right (when text input has focus)                          |
+| `ctrl+left`          | `ctrl+left`     | `win+left`       | `super+left`     | `cursorWordPartStartLeft`                          | Move cursor word part start left (when text input has focus)                |
+| `shift+ctrl+left`    | `shift+ctrl+left`| `shift+win+left` | `shift+super+left`| `cursorWordPartStartLeftSelect`                  | Select word part start left (when text input has focus)                     |
+| `ctrl+backspace`     | `ctrl+backspace`| `win+backspace`  | `super+backspace`| `deleteWordPartLeft`                               | Delete word part left (when text input has focus and editor is not readonly)|
+| `shift+ctrl+backspace`| `shift+ctrl+backspace`| `shift+win+backspace`| `shift+super+backspace`| `deleteWordPartRight`                  | Delete word part right (when text input has focus and editor is not readonly)|
+| `alt+cmd+left`       |                 |                  |                  | `editor.fold`                                      | Fold code                                                                   |
+| `alt+cmd+right`      |                 |                  |                  | `editor.unfold`                                    | Unfold code                                                                 |
+| `alt+cmd+[`          |                 |                  |                  | `editor.action.moveLinesUpAction`                  | Move lines up                                                               |
+| `alt+cmd+]`          |                 |                  |                  | `editor.action.moveLinesDownAction`                | Move lines down                                                             |
+| `alt+up`             | `alt+up`        | `alt+up`         | `alt+up`         | `cursorHome`                                       | Move cursor to start of line (when text input has focus)                    |
+| `alt+down`           | `alt+down`      | `alt+down`       | `alt+down`       | `cursorEnd`                                        | Move cursor to end of line (when text input has focus)                      |
+| `ctrl+cmd+e`         | `ctrl+cmd+e`    | `win+ctrl+e`     | `super+ctrl+e`   | `editor.action.changeAll`                          | Change all occurrences (when editor has focus and is not readonly)          |
+| `enter`              | `enter`         | `enter`          | `enter`          | `acceptSelectedSuggestion`                         | Accept selected suggestion (when suggestion widget is visible and editor has focus)|
+| `ctrl+shift+up`      | `ctrl+shift+up` | `win+shift+up`   | `super+shift+up` | `editor.action.insertCursorAbove`                  | Insert cursor above (when editor has focus)                                 |
+| `ctrl+shift+down`    | `ctrl+shift+down`| `win+shift+down` | `super+shift+down`| `editor.action.insertCursorBelow`                | Insert cursor below (when editor has focus)                                 |
+| `cmd+l`              | `cmd+l`         | `ctrl+l`         | `ctrl+l`         | `workbench.action.gotoLine`                        | Go to specific line (when text input has focus)                             |
+| `ctrl+i`             | `ctrl+i`        | `ctrl+i`         | `ctrl+i`         | `editor.action.reindentselectedlines`              | Reindent selected lines (when editor has focus and support for the language)|
+| `cmd+d`              | `cmd+d`         | `ctrl+d`         | `ctrl+d`         | `editor.action.duplicateSelection`                 | Duplicate selection (when editor has focus)                                 |
+| `cmd+\``            | `cmd+\``        | `ctrl+\``        | `ctrl+\``        | `workbench.action.terminal.newWithCwd`             | Open new terminal at file directory                                         |
