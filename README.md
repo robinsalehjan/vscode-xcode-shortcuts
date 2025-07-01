@@ -57,4 +57,4 @@ This extension adds your favorite `Xcode` keyboard shortcuts to Visual Studio Co
 | `cmd+l`              | `cmd+l`         | `ctrl+l`         | `ctrl+l`         | `workbench.action.gotoLine`                        | Go to specific line (when text input has focus)                             |
 | `ctrl+i`             | `ctrl+i`        | `ctrl+i`         | `ctrl+i`         | `editor.action.reindentselectedlines`              | Reindent selected lines (when editor has focus and support for the language)|
 | `cmd+d`              | `cmd+d`         | `ctrl+d`         | `ctrl+d`         | `editor.action.duplicateSelection`                 | Duplicate selection (when editor has focus)                                 |
-| `cmd+\``            | `cmd+\``        | `ctrl+\``        | `ctrl+\``        | `workbench.action.terminal.newWithCwd`             | Open new terminal at file directory                                         |
+| `cmd+\`            | `cmd+\`        | `ctrl+\`        | `ctrl+\`        | `workbench.action.terminal.newWithCwd`             | Open new terminal at file directory                                         |
