@@ -1,5 +1,5 @@
 # [Xcode Shortcuts](https://marketplace.visualstudio.com/items?itemName=robinsalehjan.xcode-vscode-shortcuts)
-<!-- Supported platforms -->
+<!-- Supported platform badges -->
 ![macOS](https://img.shields.io/badge/mac%20os-000000?style=for-the-badge&logo=macos&logoColor=F0F0F0)
 ![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
 ![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=F0F0F0)
@@ -50,10 +50,10 @@ This extension adds your favorite `Xcode` keyboard shortcuts to Visual Studio Co
 | `shift+ctrl+left`    | `shift+ctrl+left`| `shift+win+left` | `shift+super+left`| `cursorWordPartStartLeftSelect`                  | Select word part start left (when text input has focus)                     |
 | `ctrl+backspace`     | `ctrl+backspace`| `win+backspace`  | `super+backspace`| `deleteWordPartLeft`                               | Delete word part left (when text input has focus and editor is not readonly)|
 | `shift+ctrl+backspace`| `shift+ctrl+backspace`| `shift+win+backspace`| `shift+super+backspace`| `deleteWordPartRight`                  | Delete word part right (when text input has focus and editor is not readonly)|
-| `alt+cmd+left`       |                 |                  |                  | `editor.fold`                                      | Fold code                                                                   |
-| `alt+cmd+right`      |                 |                  |                  | `editor.unfold`                                    | Unfold code                                                                 |
-| `alt+cmd+[`          |                 |                  |                  | `editor.action.moveLinesUpAction`                  | Move lines up                                                               |
-| `alt+cmd+]`          |                 |                  |                  | `editor.action.moveLinesDownAction`                | Move lines down                                                             |
+| `alt+cmd+left`       | `alt+cmd+left`  | `alt+ctrl+left`  | `alt+ctrl+left`  | `editor.fold`                                      | Fold code                                                                   |
+| `alt+cmd+right`      | `alt+cmd+right` | `alt+ctrl+right` | `alt+ctrl+right` | `editor.unfold`                                    | Unfold code                                                                 |
+| `alt+cmd+[`          | `alt+cmd+[`     | `alt+ctrl+[`     | `alt+ctrl+[`     | `editor.action.moveLinesUpAction`                  | Move lines up                                                               |
+| `alt+cmd+]`          | `alt+cmd+]`     | `alt+ctrl+]`     | `alt+ctrl+]`     | `editor.action.moveLinesDownAction`                | Move lines down                                                             |
 | `alt+up`             | `alt+up`        | `alt+up`         | `alt+up`         | `cursorHome`                                       | Move cursor to start of line (when text input has focus)                    |
 | `alt+down`           | `alt+down`      | `alt+down`       | `alt+down`       | `cursorEnd`                                        | Move cursor to end of line (when text input has focus)                      |
 | `ctrl+cmd+e`         | `ctrl+cmd+e`    | `win+ctrl+e`     | `super+ctrl+e`   | `editor.action.changeAll`                          | Change all occurrences (when editor has focus and is not readonly)          |
