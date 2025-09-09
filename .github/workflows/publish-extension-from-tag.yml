@@ -4,6 +4,8 @@ on:
       - "*"
 
 name: Publishing a new release to Visual Studio Marketplace
+permissions:
+  contents: read
 jobs:
   deploy:
     runs-on: ubuntu-latest
