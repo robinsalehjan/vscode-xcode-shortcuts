@@ -12,8 +12,8 @@ const pkg = JSON.parse(
 const keybindings = pkg.contributes.keybindings;
 const extensionId = `${pkg.publisher}.${pkg.name}`;
 
-// Commands from third-party extensions not available during testing
-// (run.js launches with --disable-extensions)
+// Commands from third-party extensions are not available during testing
+// because VS Code is launched with --disable-extensions (see run.js)
 const optionalCommands = new Set([
   'C_Cpp.SwitchHeaderSource',
 ]);
@@ -115,7 +115,7 @@ suite('Command Execution', () => {
     });
   }
 
-  // Commands requiring an open editor
+  // Commands that require an open editor -- suiteSetup opens one before these tests run
   const editorCommands = [
     'workbench.action.gotoLine',
     'editor.action.quickFix',
@@ -123,18 +123,18 @@ suite('Command Execution', () => {
 
   let editor;
 
-  test('open a text editor for editor command tests', async () => {
+  suiteSetup(async () => {
     const doc = await vscode.workspace.openTextDocument({
       content: 'test content\nline two\nline three',
       language: 'plaintext',
     });
     editor = await vscode.window.showTextDocument(doc);
-    assert.ok(editor, 'Failed to open text editor');
+    assert.ok(editor, 'suiteSetup failed: showTextDocument returned falsy');
   });
 
   for (const command of editorCommands) {
     test(`command executes without error: ${command}`, async () => {
-      assert.ok(editor, 'No editor available — prerequisite test failed');
+      assert.ok(editor, 'No editor available — suiteSetup failed');
       try {
         await vscode.commands.executeCommand(command);
       } catch (err) {
