@@ -41,13 +41,27 @@ describe('Keybinding structure', () => {
     }
   });
 
-  it('no duplicate keybindings (same key + when clause)', () => {
+  it('no duplicate keybindings (same key + when clause) on any platform', () => {
+    for (const platform of ['key', 'mac', 'win', 'linux']) {
+      const seen = new Set();
+      for (const binding of keybindings) {
+        const id = `${binding[platform]}|${binding.when || ''}`;
+        assert.ok(
+          !seen.has(id),
+          `Duplicate ${platform} keybinding: "${binding[platform]}" when="${binding.when || ''}" (command: ${binding.command})`
+        );
+        seen.add(id);
+      }
+    }
+  });
+
+  it('no duplicate command + when clause (same command accidentally on different keys)', () => {
     const seen = new Set();
     for (const binding of keybindings) {
-      const id = `${binding.key}|${binding.when || ''}`;
+      const id = `${binding.command}|${binding.when || ''}`;
       assert.ok(
         !seen.has(id),
-        `Duplicate keybinding: key="${binding.key}" when="${binding.when || ''}" (command: ${binding.command})`
+        `Duplicate command mapping: "${binding.command}" when="${binding.when || ''}" is bound to multiple keys`
       );
       seen.add(id);
     }
@@ -60,6 +74,44 @@ describe('Keybinding structure', () => {
         binding.mac,
         `"key" (${binding.key}) does not match "mac" (${binding.mac}) for ${binding.command}`
       );
+    }
+  });
+
+  it('cross-platform key convention: cmd→ctrl, ctrl→win/super', () => {
+    for (const binding of keybindings) {
+      const mac = binding.mac;
+      const win = binding.win;
+      const linux = binding.linux;
+
+      // Skip bindings that are identical across platforms (no modifier mapping needed)
+      if (mac === win && mac === linux) continue;
+
+      const macParts = mac.split('+');
+      const winParts = win.split('+');
+      const linuxParts = linux.split('+');
+
+      for (const part of macParts) {
+        if (part === 'cmd') {
+          assert.ok(
+            winParts.includes('ctrl'),
+            `"cmd" on Mac should map to "ctrl" on Win for ${binding.command} (mac="${mac}" win="${win}")`
+          );
+          assert.ok(
+            linuxParts.includes('ctrl'),
+            `"cmd" on Mac should map to "ctrl" on Linux for ${binding.command} (mac="${mac}" linux="${linux}")`
+          );
+        }
+        if (part === 'ctrl') {
+          assert.ok(
+            winParts.includes('win'),
+            `"ctrl" on Mac should map to "win" on Win for ${binding.command} (mac="${mac}" win="${win}")`
+          );
+          assert.ok(
+            linuxParts.includes('super'),
+            `"ctrl" on Mac should map to "super" on Linux for ${binding.command} (mac="${mac}" linux="${linux}")`
+          );
+        }
+      }
     }
   });
 
@@ -84,7 +136,8 @@ describe('Keybinding structure', () => {
     ];
     for (const binding of keybindings) {
       if (!binding.when) continue;
-      // Extract context keys (strip ! prefix and && operators)
+      // Extract context keys -- splits on && and strips !. Does NOT handle ||, ==, !=, or =~;
+      // the test will fail with a misleading error if those operators appear. Extend the parser if needed.
       const keys = binding.when
         .split('&&')
         .map((k) => k.trim().replace(/^!/, ''));
@@ -99,9 +152,19 @@ describe('Keybinding structure', () => {
 });
 
 describe('README sync', () => {
-  // Parse README table rows into command entries
   function parseReadmeTable() {
     const lines = readme.split('\n');
+    const headerLine = lines.find(
+      (line) => line.startsWith('|') && line.includes('Shortcut')
+    );
+    assert.ok(headerLine, 'README table header row not found');
+    const headerCells = headerLine
+      .split('|')
+      .map((c) => c.trim())
+      .filter(Boolean);
+    assert.equal(headerCells[0], 'Shortcut', 'README table column 0 should be "Shortcut"');
+    assert.equal(headerCells[4], 'Command', 'README table column 4 should be "Command"');
+
     const tableLines = lines.filter(
       (line) =>
         line.startsWith('|') &&
@@ -113,7 +176,7 @@ describe('README sync', () => {
         .split('|')
         .map((c) => c.trim())
         .filter(Boolean);
-      // cells: [shortcut, mac, win, linux, command, description]
+      // cells: [shortcut, mac, win, linux, command, description] -- must match README table column order
       return {
         mac: cells[1]?.replace(/`/g, ''),
         win: cells[2]?.replace(/`/g, ''),
@@ -123,8 +186,11 @@ describe('README sync', () => {
     });
   }
 
+  const readmeEntries = parseReadmeTable();
+
   it('every package.json keybinding has a README table row', () => {
-    const readmeEntries = parseReadmeTable();
+    // Match on command only; backtick keys (cmd+`) can't be represented faithfully
+    // in markdown code spans, so mac-key matching would produce false negatives.
     const readmeCommands = new Set(readmeEntries.map((e) => e.command));
 
     for (const binding of keybindings) {
@@ -136,7 +202,6 @@ describe('README sync', () => {
   });
 
   it('every README table row has a package.json keybinding', () => {
-    const readmeEntries = parseReadmeTable();
     const pkgCommands = new Set(keybindings.map((b) => b.command));
 
     for (const entry of readmeEntries) {
@@ -148,8 +213,6 @@ describe('README sync', () => {
   });
 
   it('README platform keys match package.json', () => {
-    const readmeEntries = parseReadmeTable();
-
     for (const binding of keybindings) {
       const readmeEntry = readmeEntries.find(
         (e) => e.command === binding.command && e.mac === binding.mac
