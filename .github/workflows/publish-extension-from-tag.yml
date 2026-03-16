@@ -7,7 +7,27 @@ name: Publishing a new release to Visual Studio Marketplace
 permissions:
   contents: read
 jobs:
+  structural:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 21
+      - run: npm run test:structural
+
+  integration:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 21
+      - run: npm install
+      - run: xvfb-run -a npm run test:integration
+
   deploy:
+    needs: [structural, integration]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

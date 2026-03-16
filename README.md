@@ -25,9 +25,15 @@ This extension adds your favorite `Xcode` keyboard shortcuts to Visual Studio Co
 ```bash
 npm install
 npm test                  # Run all tests
-npm run test:structural   # Validate keybinding structure and README sync
-npm run test:integration  # Load extension in VS Code and verify commands
+npm run test:structural   # Validate keybinding structure and README sync (node:test, no install needed)
+npm run test:integration  # Load extension in VS Code and verify commands (@vscode/test-electron + mocha)
 ```
+
+**Structural tests** validate that every keybinding has required fields, platform keys, no duplicates, and that the README table stays in sync with `package.json`.
+
+**Integration tests** launch VS Code with the extension loaded and verify that all contributed keybindings match their expected key/command/when mappings, all referenced commands exist, and safe commands execute without errors.
+
+Both test suites run automatically on PRs to `main` and must pass before a tag push can publish to the VS Code Marketplace.
 
 ##
 
