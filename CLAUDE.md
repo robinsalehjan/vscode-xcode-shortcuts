@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-VS Code extension that maps Xcode keyboard shortcuts to VS Code commands. Published to the Visual Studio Marketplace as `robinsalehjan.xcode-vscode-shortcuts`. This is a **keymap-only extension** — no TypeScript/JavaScript code, no build step. All logic lives in `package.json`.
+VS Code extension that maps Xcode keyboard shortcuts to VS Code commands. Published to the Visual Studio Marketplace as `robinsalehjan.xcode-vscode-shortcuts`. This is a **keymap-only extension** — no TypeScript/JavaScript runtime code, no build step. All extension logic lives in `package.json`.
 
 ## Architecture
 
@@ -23,7 +23,7 @@ The entire extension is defined declaratively in `package.json` under `contribut
 
 ```bash
 npm test                  # Run all tests
-npm run test:structural   # Validate keybinding structure and README sync (node:test, no install needed)
+npm run test:structural   # Validate keybinding structure and README sync (node:test, works without npm install)
 npm run test:integration  # Load extension in VS Code and verify commands (@vscode/test-electron + mocha)
 ```
 
