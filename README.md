@@ -6,6 +6,7 @@
 
 <!-- Release badges -->
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/robinsalehjan/vscode-xcode-shortcuts/publish-extension-from-tag.yml)
+![Tests](https://img.shields.io/github/actions/workflow/status/robinsalehjan/vscode-xcode-shortcuts/test.yml?label=tests)
 ![GitHub License](https://img.shields.io/github/license/robinsalehjan/vscode-xcode-shortcuts)
 ![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/robinsalehjan.xcode-vscode-shortcuts)
 ![GitHub Release](https://img.shields.io/github/v/release/robinsalehjan/vscode-xcode-shortcuts)
@@ -19,6 +20,14 @@ This extension adds your favorite `Xcode` keyboard shortcuts to Visual Studio Co
 
 ## Contribute
 ### 💡 [How to create a new shortcut](docs/HOW-TO-CREATE-NEW-SHORTCUT.md)
+
+### 🧪 Running tests
+```bash
+npm install
+npm test                  # Run all tests
+npm run test:structural   # Validate keybinding structure and README sync
+npm run test:integration  # Load extension in VS Code and verify commands
+```
 
 ##
 
