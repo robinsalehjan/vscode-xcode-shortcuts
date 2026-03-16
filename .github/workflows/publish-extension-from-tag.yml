@@ -8,7 +8,10 @@ permissions:
   contents: read
 jobs:
   structural:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -17,14 +20,22 @@ jobs:
       - run: npm run test:structural
 
   integration:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 21
       - run: npm install
-      - run: xvfb-run -a npm run test:integration
+      - name: Run integration tests (Linux)
+        if: runner.os == 'Linux'
+        run: xvfb-run -a npm run test:integration
+      - name: Run integration tests (macOS)
+        if: runner.os == 'macOS'
+        run: npm run test:integration
 
   deploy:
     needs: [structural, integration]
