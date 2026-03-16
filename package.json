@@ -31,6 +31,15 @@
     "url": "https://github.com/robinsalehjan/vscode-xcode-shortcuts/issues"
   },
   "icon": "icon.png",
+  "scripts": {
+    "test": "npm run test:structural && npm run test:integration",
+    "test:structural": "node --test test/structural.test.js",
+    "test:integration": "node test/integration/run.js"
+  },
+  "devDependencies": {
+    "@vscode/test-electron": "^2.4.1",
+    "mocha": "^10.7.3"
+  },
   "contributes": {
     "keybindings": [
       {
