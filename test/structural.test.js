@@ -136,8 +136,15 @@ describe('Keybinding structure', () => {
     ];
     for (const binding of keybindings) {
       if (!binding.when) continue;
-      // Extract context keys -- splits on && and strips !. Does NOT handle ||, ==, !=, or =~;
-      // the test will fail with a misleading error if those operators appear. Extend the parser if needed.
+      // Splits on && and strips leading !. Other operators (||, ==, !=, =~) are not parsed --
+      // if one appears, the unsplit expression is treated as a single unknown key. The guard
+      // below catches this early with a clear message. Extend the parser when those operators
+      // are first needed.
+      assert.ok(
+        !/[|=~]/.test(binding.when),
+        `When-clause parser does not support operators in "${binding.when}" for ${binding.command}. ` +
+        `Extend the parser to handle this syntax.`
+      );
       const keys = binding.when
         .split('&&')
         .map((k) => k.trim().replace(/^!/, ''));
@@ -176,7 +183,8 @@ describe('README sync', () => {
         .split('|')
         .map((c) => c.trim())
         .filter(Boolean);
-      // cells: [shortcut, mac, win, linux, command, description] -- must match README table column order
+      // cells: [shortcut, mac, win, linux, command, description] -- must match README table column order.
+      // Only mac/win/linux/command are extracted; shortcut is redundant with mac, description is not validated.
       return {
         mac: cells[1]?.replace(/`/g, ''),
         win: cells[2]?.replace(/`/g, ''),
@@ -191,6 +199,7 @@ describe('README sync', () => {
   it('every package.json keybinding has a README table row', () => {
     // Match on command only; backtick keys (cmd+`) can't be represented faithfully
     // in markdown code spans, so mac-key matching would produce false negatives.
+    // This is safe because the structural test above ensures no duplicate command+when pairs exist.
     const readmeCommands = new Set(readmeEntries.map((e) => e.command));
 
     for (const binding of keybindings) {
@@ -213,11 +222,20 @@ describe('README sync', () => {
   });
 
   it('README platform keys match package.json', () => {
+    // Commands whose keys contain backtick (`) cannot be compared because markdown
+    // code spans use backticks as delimiters, so the README approximates ` as \.
+    const backtickCommands = new Set(['workbench.action.terminal.newWithCwd']);
+
     for (const binding of keybindings) {
+      if (backtickCommands.has(binding.command)) continue;
+
       const readmeEntry = readmeEntries.find(
-        (e) => e.command === binding.command && e.mac === binding.mac
+        (e) => e.command === binding.command
       );
-      if (!readmeEntry) continue; // covered by other test
+      assert.ok(
+        readmeEntry,
+        `No README entry found for command="${binding.command}" — cannot verify platform keys`
+      );
 
       assert.equal(
         readmeEntry.win,
