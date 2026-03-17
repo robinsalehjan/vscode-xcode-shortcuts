@@ -12,8 +12,10 @@ const pkg = JSON.parse(
 const keybindings = pkg.contributes.keybindings;
 const extensionId = `${pkg.publisher}.${pkg.name}`;
 
-// Commands from third-party extensions are not available during testing
-// because VS Code is launched with --disable-extensions (see run.js)
+// Commands from third-party extensions are not available during testing because
+// VS Code is launched with --disable-extensions (see run.js). The extension under
+// test is still loaded via extensionDevelopmentPath, but third-party dependencies
+// like C/C++ are not.
 const optionalCommands = new Set([
   'C_Cpp.SwitchHeaderSource',
 ]);
@@ -107,15 +109,12 @@ suite('Command Execution', () => {
 
   for (const command of safeCommands) {
     test(`command executes without error: ${command}`, async () => {
-      try {
-        await vscode.commands.executeCommand(command);
-      } catch (err) {
-        assert.fail(`Command "${command}" threw: ${err.message}`);
-      }
+      await vscode.commands.executeCommand(command);
     });
   }
 
-  // Commands that require an open editor -- suiteSetup opens one before these tests run
+  // Commands that require an open editor -- suiteSetup opens one before all
+  // tests in this suite (including safeCommands above, which don't need it)
   const editorCommands = [
     'workbench.action.gotoLine',
     'editor.action.quickFix',
@@ -124,22 +123,25 @@ suite('Command Execution', () => {
   let editor;
 
   suiteSetup(async () => {
-    const doc = await vscode.workspace.openTextDocument({
-      content: 'test content\nline two\nline three',
-      language: 'plaintext',
-    });
-    editor = await vscode.window.showTextDocument(doc);
-    assert.ok(editor, 'suiteSetup failed: showTextDocument returned falsy');
+    try {
+      const doc = await vscode.workspace.openTextDocument({
+        content: 'test content\nline two\nline three',
+        language: 'plaintext',
+      });
+      editor = await vscode.window.showTextDocument(doc);
+      assert.ok(editor, 'showTextDocument returned falsy');
+    } catch (err) {
+      throw new Error(
+        `suiteSetup failed to open a text document; editor-dependent tests will be skipped. ` +
+        `Original error: ${err?.message ?? err}`
+      );
+    }
   });
 
   for (const command of editorCommands) {
     test(`command executes without error: ${command}`, async () => {
       assert.ok(editor, 'No editor available — suiteSetup failed');
-      try {
-        await vscode.commands.executeCommand(command);
-      } catch (err) {
-        assert.fail(`Command "${command}" threw: ${err.message}`);
-      }
+      await vscode.commands.executeCommand(command);
     });
   }
 });
