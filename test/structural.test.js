@@ -136,10 +136,9 @@ describe('Keybinding structure', () => {
     ];
     for (const binding of keybindings) {
       if (!binding.when) continue;
-      // Splits on && and strips leading !. Other operators (||, ==, !=, =~) are not parsed --
-      // if one appears, the unsplit expression is treated as a single unknown key. The guard
-      // below catches this early with a clear message. Extend the parser when those operators
-      // are first needed.
+      // Splits on && and strips leading !. Other operators (||, ==, !=, =~) are not parsed.
+      // The guard below rejects any when-clause containing those operators before parsing
+      // proceeds. Extend the parser when those operators are first needed.
       assert.ok(
         !/[|=~]/.test(binding.when),
         `When-clause parser does not support operators in "${binding.when}" for ${binding.command}. ` +
@@ -222,8 +221,8 @@ describe('README sync', () => {
   });
 
   it('README platform keys match package.json', () => {
-    // Commands whose keys contain backtick (`) cannot be compared because markdown
-    // code spans use backticks as delimiters, so the README approximates ` as \.
+    // Commands whose keys contain backtick (`) cannot be compared because the
+    // backtick breaks markdown code span parsing, producing garbled cell values.
     const backtickCommands = new Set(['workbench.action.terminal.newWithCwd']);
 
     for (const binding of keybindings) {

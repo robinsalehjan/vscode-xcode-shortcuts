@@ -76,7 +76,7 @@ Both test suites run automatically on PRs to `main`. They also run as part of th
 | `ctrl+shift+up`      | `ctrl+shift+up` | `win+shift+up`   | `super+shift+up` | `editor.action.insertCursorAbove`                  | Insert cursor above (when editor has focus)                                 |
 | `ctrl+shift+down`    | `ctrl+shift+down`| `win+shift+down` | `super+shift+down`| `editor.action.insertCursorBelow`                | Insert cursor below (when editor has focus)                                 |
 | `cmd+l`              | `cmd+l`         | `ctrl+l`         | `ctrl+l`         | `workbench.action.gotoLine`                        | Go to specific line (when text input has focus)                             |
-| `ctrl+i`             | `ctrl+i`        | `ctrl+i`         | `ctrl+i`         | `editor.action.reindentselectedlines`              | Reindent selected lines (when editor has focus and support for the language)|
+| `ctrl+i`             | `ctrl+i`        | `ctrl+i`         | `ctrl+i`         | `editor.action.reindentselectedlines`              | Reindent selected lines (when editor has focus)                            |
 | `cmd+d`              | `cmd+d`         | `ctrl+d`         | `ctrl+d`         | `editor.action.duplicateSelection`                 | Duplicate selection (when editor has focus)                                 |
 | `cmd+\`            | `cmd+\`        | `ctrl+\`        | `ctrl+\`        | `workbench.action.terminal.newWithCwd`             | Open new terminal at file directory                                         |
 | `cmd+shift+a`        | `cmd+shift+a`   | `ctrl+shift+a`   | `ctrl+shift+a`   | `editor.action.quickFix`                           | Quick actions / quick fix (when editor has focus)                           |

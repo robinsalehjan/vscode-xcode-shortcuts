@@ -113,8 +113,8 @@ suite('Command Execution', () => {
     });
   }
 
-  // Commands that require an open editor -- suiteSetup opens one before all
-  // tests in this suite (including safeCommands above, which don't need it)
+  // Commands that require an open editor -- suiteSetup below opens one before
+  // all tests in this suite. The safeCommands above tolerate the open editor harmlessly.
   const editorCommands = [
     'workbench.action.gotoLine',
     'editor.action.quickFix',
@@ -132,7 +132,7 @@ suite('Command Execution', () => {
       assert.ok(editor, 'showTextDocument returned falsy');
     } catch (err) {
       throw new Error(
-        `suiteSetup failed to open a text document; editor-dependent tests will be skipped. ` +
+        `suiteSetup failed to open a text document; all tests in this suite will fail. ` +
         `Original error: ${err?.message ?? err}`
       );
     }
