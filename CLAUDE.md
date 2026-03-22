@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-VS Code extension that maps Xcode keyboard shortcuts to VS Code commands. Published to the Visual Studio Marketplace as `robinsalehjan.xcode-vscode-shortcuts`. This is a **keymap-only extension** — no TypeScript/JavaScript runtime code, no build step. All extension logic lives in `package.json`.
+VS Code extension that maps Xcode keyboard shortcuts to VS Code commands. Published to the Visual Studio Marketplace as `robinsalehjan.xcode-vscode-shortcuts`. This is a **keymap-only extension** — no runtime code shipped with the extension, no build step. All extension logic lives declaratively in `package.json`. (Test files are JS but are not part of the extension.)
 
 ## Architecture
 

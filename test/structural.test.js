@@ -83,12 +83,28 @@ describe('Keybinding structure', () => {
       const win = binding.win;
       const linux = binding.linux;
 
-      // Skip bindings that are identical across platforms (no modifier mapping needed)
+      // Skip bindings identical across all platforms (e.g., ctrl+i where ctrl is used
+      // literally on every OS, not as a platform-adaptive modifier substitute for cmd)
       if (mac === win && mac === linux) continue;
 
       const macParts = mac.split('+');
       const winParts = win.split('+');
       const linuxParts = linux.split('+');
+
+      // Verify the base key (non-modifier final segment) is identical across platforms
+      const macBase = macParts[macParts.length - 1];
+      const winBase = winParts[winParts.length - 1];
+      const linuxBase = linuxParts[linuxParts.length - 1];
+      assert.equal(
+        winBase,
+        macBase,
+        `Base key mismatch: mac="${mac}" ends with "${macBase}" but win="${win}" ends with "${winBase}" for ${binding.command}`
+      );
+      assert.equal(
+        linuxBase,
+        macBase,
+        `Base key mismatch: mac="${mac}" ends with "${macBase}" but linux="${linux}" ends with "${linuxBase}" for ${binding.command}`
+      );
 
       for (const part of macParts) {
         if (part === 'cmd') {
@@ -136,9 +152,10 @@ describe('Keybinding structure', () => {
     ];
     for (const binding of keybindings) {
       if (!binding.when) continue;
-      // Splits on && and strips leading !. Other operators (||, ==, !=, =~) are not parsed.
-      // The guard below rejects any when-clause containing those operators before parsing
-      // proceeds. Extend the parser when those operators are first needed.
+      // Splits on && and strips leading !. The guard below rejects any when-clause
+      // containing |, =, or ~ characters (catches ||, ==, !=, =~ operators). The regex
+      // is intentionally broad to catch any unsupported operator syntax.
+      // Extend the parser when those operators are first needed.
       assert.ok(
         !/[|=~]/.test(binding.when),
         `When-clause parser does not support operators in "${binding.when}" for ${binding.command}. ` +
@@ -183,12 +200,17 @@ describe('README sync', () => {
         .map((c) => c.trim())
         .filter(Boolean);
       // cells: [shortcut, mac, win, linux, command, description] -- must match README table column order.
-      // Only mac/win/linux/command are extracted; shortcut is redundant with mac, description is not validated.
+      // Only mac/win/linux/command are extracted; shortcut is redundant with mac
+      // (enforced by the 'key field matches mac platform key' test), description is not validated.
+      assert.ok(
+        cells.length >= 5,
+        `README table row has ${cells.length} columns, expected at least 5: "${line}"`
+      );
       return {
-        mac: cells[1]?.replace(/`/g, ''),
-        win: cells[2]?.replace(/`/g, ''),
-        linux: cells[3]?.replace(/`/g, ''),
-        command: cells[4]?.replace(/`/g, ''),
+        mac: cells[1].replace(/`/g, ''),
+        win: cells[2].replace(/`/g, ''),
+        linux: cells[3].replace(/`/g, ''),
+        command: cells[4].replace(/`/g, ''),
       };
     });
   }
@@ -236,6 +258,11 @@ describe('README sync', () => {
         `No README entry found for command="${binding.command}" — cannot verify platform keys`
       );
 
+      assert.equal(
+        readmeEntry.mac,
+        binding.mac,
+        `Mac key mismatch for ${binding.command}: README="${readmeEntry.mac}" vs package.json="${binding.mac}"`
+      );
       assert.equal(
         readmeEntry.win,
         binding.win,

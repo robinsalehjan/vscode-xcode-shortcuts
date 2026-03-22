@@ -113,11 +113,25 @@ suite('Command Execution', () => {
     });
   }
 
-  // Commands that require an open editor -- suiteSetup below opens one before
-  // all tests in this suite. The safeCommands above tolerate the open editor harmlessly.
+  // Commands that require an open editor -- suiteSetup opens a document before any
+  // test in 'Command Execution' runs, which also harmlessly affects safeCommands above.
   const editorCommands = [
     'workbench.action.gotoLine',
     'editor.action.quickFix',
+    'editor.action.addSelectionToNextFindMatch',
+    'editor.fold',
+    'editor.unfold',
+    'editor.action.moveLinesUpAction',
+    'editor.action.moveLinesDownAction',
+    'editor.action.changeAll',
+    'editor.action.insertCursorAbove',
+    'editor.action.insertCursorBelow',
+    'editor.action.reindentselectedlines',
+    'editor.action.duplicateSelection',
+    'cursorHome',
+    'cursorEnd',
+    'cursorWordPartRight',
+    'cursorWordPartStartLeft',
   ];
 
   let editor;
@@ -133,7 +147,8 @@ suite('Command Execution', () => {
     } catch (err) {
       throw new Error(
         `suiteSetup failed to open a text document; all tests in this suite will fail. ` +
-        `Original error: ${err?.message ?? err}`
+        `Original error: ${err?.message ?? err}`,
+        { cause: err }
       );
     }
   });
