@@ -23,17 +23,18 @@ The entire extension is defined declaratively in `package.json` under `contribut
 
 ```bash
 npm test                  # Run all tests
-npm run test:structural   # Validate keybinding structure and README sync (node:test, works without npm install)
-npm run test:integration  # Load extension in VS Code and verify commands (@vscode/test-electron + mocha)
+npm run test:structural   # Validate keybinding structure and README sync (node:test, no npm install needed)
+npm run test:integration  # Load extension in VS Code and verify commands (npm install required for @vscode/test-electron + mocha)
 ```
 
-Integration tests require a display server — CI uses `xvfb-run -a`.
+Integration tests require a display server — CI uses `xvfb-run -a` on Linux. CI runs both suites on an **ubuntu + macOS matrix** via a reusable workflow.
 
 ## Release Process
 
 - Bump version in `package.json`
-- Push a semver tag (e.g., `v1.4.1`) to trigger the GitHub Actions workflow that publishes to the VS Code Marketplace
-- The workflow uses `HaaLeo/publish-vscode-extension@v1` with a `VS_MARKETPLACE_TOKEN` secret
+- Push a semver tag **without** the `v` prefix (e.g., `1.5.0`, not `v1.5.0`) to trigger the GitHub Actions publish workflow
+- The workflow gates on the full test suite passing before deploying via `HaaLeo/publish-vscode-extension@v1` with a `VS_MARKETPLACE_TOKEN` secret
+- After pushing the tag, verify the workflow ran successfully in GitHub Actions before announcing the release
 
 ## PR Checklist
 
