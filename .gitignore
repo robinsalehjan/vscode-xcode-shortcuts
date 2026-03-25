@@ -6,6 +6,9 @@
 # macOS
 .DS_Store
 
+# VS Code test runner downloads
+.vscode-test/
+
 # User-specific files
 *.rsuser
 *.suo

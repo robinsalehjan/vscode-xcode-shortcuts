@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-VS Code extension that maps Xcode keyboard shortcuts to VS Code commands. Published to the Visual Studio Marketplace as `robinsalehjan.xcode-vscode-shortcuts`. This is a **keymap-only extension** — no TypeScript/JavaScript code, no build step, no tests. All logic lives in `package.json`.
+VS Code extension that maps Xcode keyboard shortcuts to VS Code commands. Published to the Visual Studio Marketplace as `robinsalehjan.xcode-vscode-shortcuts`. This is a **keymap-only extension** — no runtime code shipped with the extension, no build step. All extension logic lives declaratively in `package.json`. (Test files are JS but are not part of the extension.)
 
 ## Architecture
 
@@ -19,6 +19,16 @@ The entire extension is defined declaratively in `package.json` under `contribut
 5. Update the shortcut table in `README.md`
 6. Update `CHANGELOG.md` with the change (date format: DD.MM.YYYY)
 
+## Testing
+
+```bash
+npm test                  # Run all tests
+npm run test:structural   # Validate keybinding structure and README sync (node:test, works without npm install)
+npm run test:integration  # Load extension in VS Code and verify commands (@vscode/test-electron + mocha)
+```
+
+Integration tests require a display server — CI uses `xvfb-run -a`.
+
 ## Release Process
 
 - Bump version in `package.json`
@@ -27,4 +37,6 @@ The entire extension is defined declaratively in `package.json` under `contribut
 
 ## PR Checklist
 
-When opening a PR that adds a shortcut, ensure the new shortcut is also added to the `README.md` table.
+When opening a PR that adds a shortcut:
+- Run `npm test` — structural tests will catch missing platform keys or README drift
+- CI runs both test suites automatically on PRs to `main`

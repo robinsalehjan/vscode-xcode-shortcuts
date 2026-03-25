@@ -1,3 +1,15 @@
+## 1.5.0 (16.03.2026)
+- Fix missing cross-platform keys for `cmd+b`, `cmd+u`, `cmd+0`, fold/unfold, and move-lines shortcuts
+- Fix `ctrl+6` (gotoSymbol) to use `win+6` / `super+6` on Win/Linux per cross-platform convention
+- Fix modifier key ordering inconsistencies (`shift+cmd` → `cmd+shift`, `shift+ctrl` → `ctrl+shift`)
+- Fix `navigateForward` Win/Linux keys to match `navigateBack` pattern
+- Remove duplicate `navigateBack` keybinding
+- Remove restrictive `when` clause from `toggleSidebarVisibility`
+- Add `cmd+shift+a` shortcut for quick fix (`editor.action.quickFix`)
+- Add `ctrl+6` shortcut for go to symbol (`workbench.action.gotoSymbol`)
+- Add structural and integration test suites
+- Add CI test workflow and gate marketplace publish behind passing tests
+
 ## 1.4.1 (08.01.2026)
 - Version bump
 

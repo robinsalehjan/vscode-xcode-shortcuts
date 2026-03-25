@@ -1,0 +1,12 @@
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+name: Tests
+permissions:
+  contents: read
+jobs:
+  tests:
+    uses: ./.github/workflows/reusable-tests.yml

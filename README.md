@@ -6,6 +6,7 @@
 
 <!-- Release badges -->
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/robinsalehjan/vscode-xcode-shortcuts/publish-extension-from-tag.yml)
+![Tests](https://img.shields.io/github/actions/workflow/status/robinsalehjan/vscode-xcode-shortcuts/test.yml?label=tests)
 ![GitHub License](https://img.shields.io/github/license/robinsalehjan/vscode-xcode-shortcuts)
 ![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/robinsalehjan.xcode-vscode-shortcuts)
 ![GitHub Release](https://img.shields.io/github/v/release/robinsalehjan/vscode-xcode-shortcuts)
@@ -20,6 +21,20 @@ This extension adds your favorite `Xcode` keyboard shortcuts to Visual Studio Co
 ## Contribute
 ### 💡 [How to create a new shortcut](docs/HOW-TO-CREATE-NEW-SHORTCUT.md)
 
+### 🧪 Running tests
+```bash
+npm install
+npm test                  # Run all tests
+npm run test:structural   # Validate keybinding structure and README sync (node:test, works without npm install)
+npm run test:integration  # Load extension in VS Code and verify commands (@vscode/test-electron + mocha)
+```
+
+**Structural tests** validate that every keybinding has required fields, platform keys, no duplicates, correct cross-platform key convention (`cmd`→`ctrl`, `ctrl`→`win`/`super`), and that the README table stays in sync with `package.json`.
+
+**Integration tests** launch VS Code with the extension loaded and verify that all contributed keybindings match their expected key/command/when mappings, all referenced commands exist, and safe commands execute without errors.
+
+Both test suites run automatically on PRs to `main`. They also run as part of the publish workflow, where they must pass before deployment to the VS Code Marketplace.
+
 ##
 
 | Shortcut             | Mac             | Win              | Linux            | Command                                             | Description                                                                 |
@@ -27,12 +42,12 @@ This extension adds your favorite `Xcode` keyboard shortcuts to Visual Studio Co
 | `cmd+e`              | `cmd+e`         | `ctrl+e`         | `ctrl+e`         | `editor.action.addSelectionToNextFindMatch`         | Add selection to next find match                                            |
 | `cmd+shift+j`        | `cmd+shift+j`   | `ctrl+shift+j`   | `ctrl+shift+j`   | `workbench.files.action.showActiveFileInExplorer`   | Show active file in explorer                                                |
 | `cmd+ctrl+up`        | `cmd+ctrl+up`   | `ctrl+win+up`    | `ctrl+super+up`  | `C_Cpp.SwitchHeaderSource`                         | Switch between header and source file                                       |
-| `shift+cmd+]`        | `shift+cmd+]`   | `shift+ctrl+]`   | `shift+ctrl+]`   | `workbench.action.nextEditor`                      | Move to next editor                                                         |
-| `shift+cmd+[`        | `shift+cmd+[`   | `shift+ctrl+[`   | `shift+ctrl+[`   | `workbench.action.previousEditor`                  | Move to previous editor                                                     |
+| `cmd+shift+]`        | `cmd+shift+]`   | `ctrl+shift+]`   | `ctrl+shift+]`   | `workbench.action.nextEditor`                      | Move to next editor                                                         |
+| `cmd+shift+[`        | `cmd+shift+[`   | `ctrl+shift+[`   | `ctrl+shift+[`   | `workbench.action.previousEditor`                  | Move to previous editor                                                     |
 | `cmd+shift+y`        | `cmd+shift+y`   | `ctrl+shift+y`   | `ctrl+shift+y`   | `workbench.action.togglePanel`                     | Toggle panel visibility                                                     |
 | `cmd+shift+o`        | `cmd+shift+o`   | `ctrl+shift+o`   | `ctrl+shift+o`   | `workbench.action.quickOpen`                       | Quick open files or commands                                                |
 | `cmd+ctrl+left`      | `cmd+ctrl+left` | `ctrl+win+left`  | `ctrl+super+left`| `workbench.action.navigateBack`                    | Navigate back                                                               |
-| `cmd+ctrl+right`     | `cmd+ctrl+right`| `win+ctrl+right` | `super+ctrl+right`| `workbench.action.navigateForward`                 | Navigate forward                                                            |
+| `cmd+ctrl+right`     | `cmd+ctrl+right`| `ctrl+win+right` | `ctrl+super+right`| `workbench.action.navigateForward`                 | Navigate forward                                                            |
 | `cmd+1`              | `cmd+1`         | `ctrl+1`         | `ctrl+1`         | `workbench.view.explorer`                          | Open Explorer view                                                          |
 | `cmd+2`              | `cmd+2`         | `ctrl+2`         | `ctrl+2`         | `workbench.view.search`                            | Open Search view                                                            |
 | `cmd+3`              | `cmd+3`         | `ctrl+3`         | `ctrl+3`         | `workbench.view.scm`                               | Open Source Control view                                                    |
@@ -41,15 +56,15 @@ This extension adds your favorite `Xcode` keyboard shortcuts to Visual Studio Co
 | `cmd+r`              | `cmd+r`         | `ctrl+r`         | `ctrl+r`         | `workbench.action.debug.start`                     | Start debug (when not in debug mode)                                        |
 | `cmd+r`              | `cmd+r`         | `ctrl+r`         | `ctrl+r`         | `workbench.action.debug.restart`                   | Restart debug (when in debug mode)                                          |
 | `cmd+.`              | `cmd+.`         | `ctrl+.`         | `ctrl+.`         | `workbench.action.debug.stop`                      | Stop debug (when in debug mode)                                             |
-| `cmd+b`              | `cmd+b`         |                  |                  | `workbench.action.tasks.build`                     | Run build task                                                              |
-| `cmd+u`              | `cmd+u`         |                  |                  | `workbench.action.tasks.test`                      | Run test task                                                               |
-| `cmd+0`              | `cmd+0`         |                  |                  | `workbench.action.toggleSidebarVisibility`         | Toggle sidebar visibility                                                   |
+| `cmd+b`              | `cmd+b`         | `ctrl+b`         | `ctrl+b`         | `workbench.action.tasks.build`                     | Run build task                                                              |
+| `cmd+u`              | `cmd+u`         | `ctrl+u`         | `ctrl+u`         | `workbench.action.tasks.test`                      | Run test task                                                               |
+| `cmd+0`              | `cmd+0`         | `ctrl+0`         | `ctrl+0`         | `workbench.action.toggleSidebarVisibility`         | Toggle sidebar visibility                                                   |
 | `ctrl+right`         | `ctrl+right`    | `win+right`      | `super+right`    | `cursorWordPartRight`                              | Move cursor word part right (when text input has focus)                     |
-| `shift+ctrl+right`   | `shift+ctrl+right`| `shift+win+right`| `shift+super+right`| `cursorWordPartRightSelect`                    | Select word part right (when text input has focus)                          |
+| `ctrl+shift+right`   | `ctrl+shift+right`| `shift+win+right`| `shift+super+right`| `cursorWordPartRightSelect`                    | Select word part right (when text input has focus)                          |
 | `ctrl+left`          | `ctrl+left`     | `win+left`       | `super+left`     | `cursorWordPartStartLeft`                          | Move cursor word part start left (when text input has focus)                |
-| `shift+ctrl+left`    | `shift+ctrl+left`| `shift+win+left` | `shift+super+left`| `cursorWordPartStartLeftSelect`                  | Select word part start left (when text input has focus)                     |
+| `ctrl+shift+left`    | `ctrl+shift+left`| `shift+win+left` | `shift+super+left`| `cursorWordPartStartLeftSelect`                  | Select word part start left (when text input has focus)                     |
 | `ctrl+backspace`     | `ctrl+backspace`| `win+backspace`  | `super+backspace`| `deleteWordPartLeft`                               | Delete word part left (when text input has focus and editor is not readonly)|
-| `shift+ctrl+backspace`| `shift+ctrl+backspace`| `shift+win+backspace`| `shift+super+backspace`| `deleteWordPartRight`                  | Delete word part right (when text input has focus and editor is not readonly)|
+| `ctrl+shift+backspace`| `ctrl+shift+backspace`| `shift+win+backspace`| `shift+super+backspace`| `deleteWordPartRight`                  | Delete word part right (when text input has focus and editor is not readonly)|
 | `alt+cmd+left`       | `alt+cmd+left`  | `alt+ctrl+left`  | `alt+ctrl+left`  | `editor.fold`                                      | Fold code                                                                   |
 | `alt+cmd+right`      | `alt+cmd+right` | `alt+ctrl+right` | `alt+ctrl+right` | `editor.unfold`                                    | Unfold code                                                                 |
 | `alt+cmd+[`          | `alt+cmd+[`     | `alt+ctrl+[`     | `alt+ctrl+[`     | `editor.action.moveLinesUpAction`                  | Move lines up                                                               |
@@ -61,6 +76,8 @@ This extension adds your favorite `Xcode` keyboard shortcuts to Visual Studio Co
 | `ctrl+shift+up`      | `ctrl+shift+up` | `win+shift+up`   | `super+shift+up` | `editor.action.insertCursorAbove`                  | Insert cursor above (when editor has focus)                                 |
 | `ctrl+shift+down`    | `ctrl+shift+down`| `win+shift+down` | `super+shift+down`| `editor.action.insertCursorBelow`                | Insert cursor below (when editor has focus)                                 |
 | `cmd+l`              | `cmd+l`         | `ctrl+l`         | `ctrl+l`         | `workbench.action.gotoLine`                        | Go to specific line (when text input has focus)                             |
-| `ctrl+i`             | `ctrl+i`        | `ctrl+i`         | `ctrl+i`         | `editor.action.reindentselectedlines`              | Reindent selected lines (when editor has focus and support for the language)|
+| `ctrl+i`             | `ctrl+i`        | `ctrl+i`         | `ctrl+i`         | `editor.action.reindentselectedlines`              | Reindent selected lines (when editor has focus)                            |
 | `cmd+d`              | `cmd+d`         | `ctrl+d`         | `ctrl+d`         | `editor.action.duplicateSelection`                 | Duplicate selection (when editor has focus)                                 |
 | `cmd+\`            | `cmd+\`        | `ctrl+\`        | `ctrl+\`        | `workbench.action.terminal.newWithCwd`             | Open new terminal at file directory                                         |
+| `cmd+shift+a`        | `cmd+shift+a`   | `ctrl+shift+a`   | `ctrl+shift+a`   | `editor.action.quickFix`                           | Quick actions / quick fix (when editor has focus)                           |
+| `ctrl+6`             | `ctrl+6`        | `win+6`          | `super+6`        | `workbench.action.gotoSymbol`                      | Go to symbol in file                                                        |

@@ -2,7 +2,7 @@
   "name": "xcode-vscode-shortcuts",
   "displayName": "Xcode Shortcuts",
   "description": "Xcode keyboard shortcuts for Visual Studio Code",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "publisher": "robinsalehjan",
   "homepage": "https://github.com/robinsalehjan/vscode-xcode-shortcuts/#readme",
   "engines": {
@@ -31,6 +31,15 @@
     "url": "https://github.com/robinsalehjan/vscode-xcode-shortcuts/issues"
   },
   "icon": "icon.png",
+  "scripts": {
+    "test": "npm run test:structural && npm run test:integration",
+    "test:structural": "node --test test/structural.test.js",
+    "test:integration": "node test/integration/run.js"
+  },
+  "devDependencies": {
+    "@vscode/test-electron": "^2.4.1",
+    "mocha": "^10.7.3"
+  },
   "contributes": {
     "keybindings": [
       {
@@ -55,18 +64,18 @@
         "linux": "ctrl+super+up"
       },
       {
-        "key": "shift+cmd+]",
+        "key": "cmd+shift+]",
         "command": "workbench.action.nextEditor",
-        "mac": "shift+cmd+]",
-        "win": "shift+ctrl+]",
-        "linux": "shift+ctrl+]"
+        "mac": "cmd+shift+]",
+        "win": "ctrl+shift+]",
+        "linux": "ctrl+shift+]"
       },
       {
-        "key": "shift+cmd+[",
+        "key": "cmd+shift+[",
         "command": "workbench.action.previousEditor",
-        "mac": "shift+cmd+[",
-        "win": "shift+ctrl+[",
-        "linux": "shift+ctrl+["
+        "mac": "cmd+shift+[",
+        "win": "ctrl+shift+[",
+        "linux": "ctrl+shift+["
       },
       {
         "key": "cmd+shift+y",
@@ -90,18 +99,11 @@
         "linux": "ctrl+super+left"
       },
       {
-        "key": "cmd+ctrl+left",
-        "command": "workbench.action.navigateBack",
-        "mac": "cmd+ctrl+left",
-        "win": "win+ctrl+left",
-        "linux": "super+ctrl+left"
-      },
-      {
         "key": "cmd+ctrl+right",
         "command": "workbench.action.navigateForward",
         "mac": "cmd+ctrl+right",
-        "win": "win+ctrl+right",
-        "linux": "super+ctrl+right"
+        "win": "ctrl+win+right",
+        "linux": "ctrl+super+right"
       },
       {
         "key": "cmd+1",
@@ -165,17 +167,25 @@
       {
         "key": "cmd+b",
         "command": "workbench.action.tasks.build",
-        "when": "editorTextFocus"
+        "when": "editorTextFocus",
+        "mac": "cmd+b",
+        "win": "ctrl+b",
+        "linux": "ctrl+b"
       },
       {
         "key": "cmd+u",
         "command": "workbench.action.tasks.test",
-        "when": "editorTextFocus"
+        "when": "editorTextFocus",
+        "mac": "cmd+u",
+        "win": "ctrl+u",
+        "linux": "ctrl+u"
       },
       {
         "key": "cmd+0",
         "command": "workbench.action.toggleSidebarVisibility",
-        "when": "editorTextFocus"
+        "mac": "cmd+0",
+        "win": "ctrl+0",
+        "linux": "ctrl+0"
       },
       {
         "key": "ctrl+right",
@@ -186,10 +196,10 @@
         "linux": "super+right"
       },
       {
-        "key": "shift+ctrl+right",
+        "key": "ctrl+shift+right",
         "command": "cursorWordPartRightSelect",
         "when": "textInputFocus",
-        "mac": "shift+ctrl+right",
+        "mac": "ctrl+shift+right",
         "win": "shift+win+right",
         "linux": "shift+super+right"
       },
@@ -202,10 +212,10 @@
         "linux": "super+left"
       },
       {
-        "key": "shift+ctrl+left",
+        "key": "ctrl+shift+left",
         "command": "cursorWordPartStartLeftSelect",
         "when": "textInputFocus",
-        "mac": "shift+ctrl+left",
+        "mac": "ctrl+shift+left",
         "win": "shift+win+left",
         "linux": "shift+super+left"
       },
@@ -218,32 +228,44 @@
         "linux": "super+backspace"
       },
       {
-        "key": "shift+ctrl+backspace",
+        "key": "ctrl+shift+backspace",
         "command": "deleteWordPartRight",
         "when": "textInputFocus && !editorReadonly",
-        "mac": "shift+ctrl+backspace",
+        "mac": "ctrl+shift+backspace",
         "win": "shift+win+backspace",
         "linux": "shift+super+backspace"
       },
       {
         "key": "alt+cmd+left",
         "command": "editor.fold",
-        "when": "editorTextFocus"
+        "when": "editorTextFocus",
+        "mac": "alt+cmd+left",
+        "win": "alt+ctrl+left",
+        "linux": "alt+ctrl+left"
       },
       {
         "key": "alt+cmd+right",
         "command": "editor.unfold",
-        "when": "editorTextFocus"
+        "when": "editorTextFocus",
+        "mac": "alt+cmd+right",
+        "win": "alt+ctrl+right",
+        "linux": "alt+ctrl+right"
       },
       {
         "key": "alt+cmd+[",
         "command": "editor.action.moveLinesUpAction",
-        "when": "editorTextFocus"
+        "when": "editorTextFocus",
+        "mac": "alt+cmd+[",
+        "win": "alt+ctrl+[",
+        "linux": "alt+ctrl+["
       },
       {
         "key": "alt+cmd+]",
         "command": "editor.action.moveLinesDownAction",
-        "when": "editorTextFocus"
+        "when": "editorTextFocus",
+        "mac": "alt+cmd+]",
+        "win": "alt+ctrl+]",
+        "linux": "alt+ctrl+]"
       },
       {
         "key": "alt+up",
@@ -326,6 +348,21 @@
         "args": {
           "cwd": "${fileDirname}"
         }
+      },
+      {
+        "key": "cmd+shift+a",
+        "command": "editor.action.quickFix",
+        "when": "editorTextFocus",
+        "mac": "cmd+shift+a",
+        "win": "ctrl+shift+a",
+        "linux": "ctrl+shift+a"
+      },
+      {
+        "key": "ctrl+6",
+        "command": "workbench.action.gotoSymbol",
+        "mac": "ctrl+6",
+        "win": "win+6",
+        "linux": "super+6"
       }
     ]
   }
