@@ -40,6 +40,9 @@
     "@vscode/test-electron": "^2.4.1",
     "mocha": "^10.7.3"
   },
+  "overrides": {
+    "serialize-javascript": ">=7.0.3"
+  },
   "contributes": {
     "keybindings": [
       {
