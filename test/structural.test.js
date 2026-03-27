@@ -8,8 +8,8 @@ const pkg = JSON.parse(
 );
 const keybindings = pkg.contributes.keybindings;
 
-const readme = fs.readFileSync(
-  path.resolve(__dirname, '..', 'README.md'),
+const shortcutsDoc = fs.readFileSync(
+  path.resolve(__dirname, '..', 'docs', 'SHORTCUTS.md'),
   'utf8'
 );
 
@@ -174,19 +174,19 @@ describe('Keybinding structure', () => {
   });
 });
 
-describe('README sync', () => {
-  function parseReadmeTable() {
-    const lines = readme.split('\n');
+describe('SHORTCUTS.md sync', () => {
+  function parseShortcutsTable() {
+    const lines = shortcutsDoc.split('\n');
     const headerLine = lines.find(
       (line) => line.startsWith('|') && line.includes('Shortcut')
     );
-    assert.ok(headerLine, 'README table header row not found');
+    assert.ok(headerLine, 'SHORTCUTS.md table header row not found');
     const headerCells = headerLine
       .split('|')
       .map((c) => c.trim())
       .filter(Boolean);
-    assert.equal(headerCells[0], 'Shortcut', 'README table column 0 should be "Shortcut"');
-    assert.equal(headerCells[4], 'Command', 'README table column 4 should be "Command"');
+    assert.equal(headerCells[0], 'Shortcut', 'SHORTCUTS.md table column 0 should be "Shortcut"');
+    assert.equal(headerCells[4], 'Command', 'SHORTCUTS.md table column 4 should be "Command"');
 
     const tableLines = lines.filter(
       (line) =>
@@ -199,12 +199,12 @@ describe('README sync', () => {
         .split('|')
         .map((c) => c.trim())
         .filter(Boolean);
-      // cells: [shortcut, mac, win, linux, command, description] -- must match README table column order.
+      // cells: [shortcut, mac, win, linux, command, description] -- must match SHORTCUTS.md table column order.
       // Only mac/win/linux/command are extracted; shortcut is redundant with mac
       // (enforced by the 'key field matches mac platform key' test), description is not validated.
       assert.ok(
         cells.length >= 5,
-        `README table row has ${cells.length} columns, expected at least 5: "${line}"`
+        `SHORTCUTS.md table row has ${cells.length} columns, expected at least 5: "${line}"`
       );
       return {
         mac: cells[1].replace(/`/g, ''),
@@ -215,34 +215,34 @@ describe('README sync', () => {
     });
   }
 
-  const readmeEntries = parseReadmeTable();
+  const shortcutsEntries = parseShortcutsTable();
 
-  it('every package.json keybinding has a README table row', () => {
+  it('every package.json keybinding has a SHORTCUTS.md table row', () => {
     // Match on command only; backtick keys (cmd+`) can't be represented faithfully
     // in markdown code spans, so mac-key matching would produce false negatives.
     // This is safe because the structural test above ensures no duplicate command+when pairs exist.
-    const readmeCommands = new Set(readmeEntries.map((e) => e.command));
+    const shortcutsCommands = new Set(shortcutsEntries.map((e) => e.command));
 
     for (const binding of keybindings) {
       assert.ok(
-        readmeCommands.has(binding.command),
-        `Command "${binding.command}" (key: ${binding.key}) is in package.json but missing from README`
+        shortcutsCommands.has(binding.command),
+        `Command "${binding.command}" (key: ${binding.key}) is in package.json but missing from SHORTCUTS.md`
       );
     }
   });
 
-  it('every README table row has a package.json keybinding', () => {
+  it('every SHORTCUTS.md table row has a package.json keybinding', () => {
     const pkgCommands = new Set(keybindings.map((b) => b.command));
 
-    for (const entry of readmeEntries) {
+    for (const entry of shortcutsEntries) {
       assert.ok(
         pkgCommands.has(entry.command),
-        `Command "${entry.command}" is in README but missing from package.json`
+        `Command "${entry.command}" is in SHORTCUTS.md but missing from package.json`
       );
     }
   });
 
-  it('README platform keys match package.json', () => {
+  it('SHORTCUTS.md platform keys match package.json', () => {
     // Commands whose keys contain backtick (`) cannot be compared because the
     // backtick breaks markdown code span parsing, producing garbled cell values.
     const backtickCommands = new Set(['workbench.action.terminal.newWithCwd']);
@@ -250,28 +250,28 @@ describe('README sync', () => {
     for (const binding of keybindings) {
       if (backtickCommands.has(binding.command)) continue;
 
-      const readmeEntry = readmeEntries.find(
+      const shortcutsEntry = shortcutsEntries.find(
         (e) => e.command === binding.command
       );
       assert.ok(
-        readmeEntry,
-        `No README entry found for command="${binding.command}" — cannot verify platform keys`
+        shortcutsEntry,
+        `No SHORTCUTS.md entry found for command="${binding.command}" — cannot verify platform keys`
       );
 
       assert.equal(
-        readmeEntry.mac,
+        shortcutsEntry.mac,
         binding.mac,
-        `Mac key mismatch for ${binding.command}: README="${readmeEntry.mac}" vs package.json="${binding.mac}"`
+        `Mac key mismatch for ${binding.command}: SHORTCUTS.md="${shortcutsEntry.mac}" vs package.json="${binding.mac}"`
       );
       assert.equal(
-        readmeEntry.win,
+        shortcutsEntry.win,
         binding.win,
-        `Win key mismatch for ${binding.command}: README="${readmeEntry.win}" vs package.json="${binding.win}"`
+        `Win key mismatch for ${binding.command}: SHORTCUTS.md="${shortcutsEntry.win}" vs package.json="${binding.win}"`
       );
       assert.equal(
-        readmeEntry.linux,
+        shortcutsEntry.linux,
         binding.linux,
-        `Linux key mismatch for ${binding.command}: README="${readmeEntry.linux}" vs package.json="${binding.linux}"`
+        `Linux key mismatch for ${binding.command}: SHORTCUTS.md="${shortcutsEntry.linux}" vs package.json="${binding.linux}"`
       );
     }
   });
