@@ -16,7 +16,7 @@ The entire extension is defined declaratively in `package.json` under `contribut
 2. Each entry needs: `key`, `command`, and platform keys (`mac`, `win`, `linux`)
 3. Cross-platform key convention: `cmd` (Mac) → `ctrl` (Win/Linux). For keybindings that use `ctrl` on Mac, map to `win` (Win) / `super` (Linux)
 4. Use `when` clauses where the command requires specific context (e.g., `editorTextFocus`, `inDebugMode`)
-5. Update the shortcut table in `README.md`
+5. Update the shortcut table in `docs/SHORTCUTS.md`
 6. Update `CHANGELOG.md` with the change (date format: DD.MM.YYYY)
 
 ## Testing
