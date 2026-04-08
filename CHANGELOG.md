@@ -1,3 +1,9 @@
+## 1.5.2 (08.04.2026)
+- Fix: use glob pattern for tag filter instead of regex in publish workflow
+
+## 1.5.1 (08.04.2026)
+- Fix: use non-v semver tag pattern for publish workflow
+
 ## 1.5.0 (16.03.2026)
 - Fix missing cross-platform keys for `cmd+b`, `cmd+u`, `cmd+0`, fold/unfold, and move-lines shortcuts
 - Fix `ctrl+6` (gotoSymbol) to use `win+6` / `super+6` on Win/Linux per cross-platform convention

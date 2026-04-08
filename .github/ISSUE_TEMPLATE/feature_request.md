@@ -1,6 +1,6 @@
 ---
 name: 🚀 Feature Request
-about: Suggest an new keybinding or feature
+about: Suggest a new keybinding or feature
 title: "[Feature]: "
 labels: enhancement
 assignees: ''

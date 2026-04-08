@@ -1,4 +1,6 @@
-## How to add a new shortcut
+# How to add a new shortcut
+
+> Browse the full list of existing shortcuts in [`docs/SHORTCUTS.md`](SHORTCUTS.md) before adding a new one.
 
 To add a new keyboard shortcut to this extension, follow these steps:
 
@@ -19,12 +21,27 @@ To add a new keyboard shortcut to this extension, follow these steps:
    ```
 
 4. **Add Your Shortcut**
-   Add a new object to the `keybindings` array with your desired key combination and command. For example:
+   Add a new object to the `keybindings` array with your desired key combination and command. Every entry must include platform-specific keys for `mac`, `win`, and `linux`. For example:
    ```json
    {
-     "key": "command+my-awesome-hotkey",
-     "command": "editor.action.addSelectionToNextFindMatch"
+     "key": "cmd+shift+f",
+     "mac": "cmd+shift+f",
+     "win": "ctrl+shift+f",
+     "linux": "ctrl+shift+f",
+     "command": "editor.action.formatDocument"
    }
    ```
-   - Replace `"command+my-awesome-hotkey"` with your preferred key combination.
-   - Replace `"editor.action.addSelectionToNextFindMatch"` with the command you want to use.
+   - Cross-platform key convention: `cmd` (Mac) → `ctrl` (Win/Linux). For keybindings that use `ctrl` on Mac, map to `win` (Win) / `super` (Linux).
+   - Add a `when` clause if the command only makes sense in a specific context (e.g., `editorTextFocus`, `inDebugMode`).
+
+5. **Update `docs/SHORTCUTS.md`**
+   Add a row to the shortcuts table documenting the new keybinding.
+
+6. **Update `CHANGELOG.md`**
+   Add an entry describing the new shortcut (date format: DD.MM.YYYY).
+
+7. **Run the tests**
+   ```bash
+   npm test
+   ```
+   Structural tests will catch missing platform keys or drift between `package.json` and `docs/SHORTCUTS.md`.
