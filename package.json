@@ -14,17 +14,23 @@
   "keywords": [
     "keybindings",
     "keymap",
+    "keyboard shortcuts",
     "hotkeys",
     "xcode",
-    "apple"
+    "apple",
+    "ios",
+    "swift"
   ],
   "extensionKind": [
     "ui",
     "workspace"
   ],
-  "preview": true,
+  "galleryBanner": {
+    "color": "#1C1C1E",
+    "theme": "dark"
+  },
   "repository": {
-    "type": "https",
+    "type": "git",
     "url": "https://github.com/robinsalehjan/vscode-xcode-shortcuts"
   },
   "bugs": {
