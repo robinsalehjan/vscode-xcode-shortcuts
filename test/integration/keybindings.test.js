@@ -94,7 +94,12 @@ suite('Keybinding Contributions', () => {
 });
 
 suite('Command Execution', () => {
-  // Commands that are safe to execute without specific editor/debug state
+  // Commands that are safe to execute without specific editor/debug state.
+  // navigateBack/Forward are no-ops when history is empty.
+  // Excluded: debug.start/restart/stop (require launch config / debug session),
+  // tasks.build/test (open picker, may hang in headless CI),
+  // terminal.newWithCwd (creates a terminal side effect),
+  // showActiveFileInExplorer (focus side effect).
   const safeCommands = [
     'workbench.view.explorer',
     'workbench.view.search',
@@ -105,6 +110,8 @@ suite('Command Execution', () => {
     'workbench.action.toggleSidebarVisibility',
     'workbench.action.quickOpen',
     'workbench.action.gotoSymbol',
+    'workbench.action.navigateBack',
+    'workbench.action.navigateForward',
   ];
 
   for (const command of safeCommands) {
