@@ -23,12 +23,12 @@ jobs:
           cache: 'npm'
       - run: npm install
       - name: Publish to Visual Studio Marketplace
-        uses: HaaLeo/publish-vscode-extension@v1
+        uses: HaaLeo/publish-vscode-extension@v2
         with:
           pat: ${{ secrets.VS_MARKETPLACE_TOKEN }}
           registryUrl: https://marketplace.visualstudio.com
       - name: Publish to Open VSX Registry
         if: env.OPEN_VSX_TOKEN != ''
-        uses: HaaLeo/publish-vscode-extension@v1
+        uses: HaaLeo/publish-vscode-extension@v2
         with:
           pat: ${{ env.OPEN_VSX_TOKEN }}
