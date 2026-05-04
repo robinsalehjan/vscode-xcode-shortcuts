@@ -152,18 +152,13 @@ describe('Keybinding structure', () => {
     ];
     for (const binding of keybindings) {
       if (!binding.when) continue;
-      // Splits on && and strips leading !. The guard below rejects any when-clause
-      // containing |, =, or ~ characters (catches ||, ==, !=, =~ operators). The regex
-      // is intentionally broad to catch any unsupported operator syntax.
-      // Extend the parser when those operators are first needed.
-      assert.ok(
-        !/[|=~]/.test(binding.when),
-        `When-clause parser does not support operators in "${binding.when}" for ${binding.command}. ` +
-        `Extend the parser to handle this syntax.`
-      );
+      // Splits on && and ||, strips leading !, and removes comparison operators
+      // (=~, ==, !=) plus their operand so the bare context key remains for validation.
+      // Add new context keys to knownContextKeys when introducing them.
       const keys = binding.when
-        .split('&&')
-        .map((k) => k.trim().replace(/^!/, ''));
+        .split(/&&|\|\|/)
+        .map((k) => k.trim().replace(/^!/, ''))
+        .map((k) => k.replace(/\s*(=~|==|!=)\s*.*$/, '').trim());
       for (const key of keys) {
         assert.ok(
           knownContextKeys.includes(key),

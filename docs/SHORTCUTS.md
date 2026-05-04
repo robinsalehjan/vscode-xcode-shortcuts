@@ -41,6 +41,6 @@
 | `cmd+l`              | `cmd+l`         | `ctrl+l`         | `ctrl+l`         | `workbench.action.gotoLine`                        | Go to specific line (when text input has focus)                             |
 | `ctrl+i`             | `ctrl+i`        | `ctrl+i`         | `ctrl+i`         | `editor.action.reindentselectedlines`              | Reindent selected lines (when editor has focus)                            |
 | `cmd+d`              | `cmd+d`         | `ctrl+d`         | `ctrl+d`         | `editor.action.duplicateSelection`                 | Duplicate selection (when editor has focus)                                 |
-| `cmd+\`            | `cmd+\`        | `ctrl+\`        | `ctrl+\`        | `workbench.action.terminal.newWithCwd`             | Open new terminal at file directory                                         |
+| <code>cmd+`</code>   | <code>cmd+`</code> | <code>ctrl+`</code> | <code>ctrl+`</code> | `workbench.action.terminal.newWithCwd`             | Open new terminal at file directory                                         |
 | `cmd+shift+a`        | `cmd+shift+a`   | `ctrl+shift+a`   | `ctrl+shift+a`   | `editor.action.quickFix`                           | Quick actions / quick fix (when editor has focus)                           |
 | `ctrl+6`             | `ctrl+6`        | `win+6`          | `super+6`        | `workbench.action.gotoSymbol`                      | Go to symbol in file                                                        |

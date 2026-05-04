@@ -13,14 +13,22 @@ jobs:
   deploy:
     needs: [tests]
     runs-on: ubuntu-latest
+    env:
+      OPEN_VSX_TOKEN: ${{ secrets.OPEN_VSX_TOKEN }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: 'npm'
       - run: npm install
       - name: Publish to Visual Studio Marketplace
         uses: HaaLeo/publish-vscode-extension@v1
         with:
           pat: ${{ secrets.VS_MARKETPLACE_TOKEN }}
           registryUrl: https://marketplace.visualstudio.com
+      - name: Publish to Open VSX Registry
+        if: env.OPEN_VSX_TOKEN != ''
+        uses: HaaLeo/publish-vscode-extension@v1
+        with:
+          pat: ${{ env.OPEN_VSX_TOKEN }}
