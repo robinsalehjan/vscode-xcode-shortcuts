@@ -1,3 +1,7 @@
+## 1.5.4 (13.08.2026)
+- CI: publish via pinned `@vscode/vsce` and `ovsx` CLIs instead of `HaaLeo/publish-vscode-extension`, which targets the deprecated Node 20 runtime
+- CI: package the extension once and publish the same `.vsix` to both registries
+
 ## 1.5.3 (13.08.2026)
 - Chore: bump `@vscode/test-electron` from 2.5.2 to 3.1.0 (fixes macOS integration test launch on VS Code 1.110+)
 - Chore: bump `js-yaml` from 4.1.1 to 4.3.1
