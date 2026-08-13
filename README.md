@@ -11,6 +11,9 @@
 
 This extension adds your favorite `Xcode` keyboard shortcuts to Visual Studio Code!
 
+## Shortcuts
+### ⌨️ [Full list of shortcuts](docs/SHORTCUTS.md)
+
 ## Request
 ### 🐛 [Found a bug](https://github.com/robinsalehjan/vscode-xcode-shortcuts/issues/new?assignees=&labels=bug&template=bug_report.md&title=)
 

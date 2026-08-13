@@ -1,3 +1,6 @@
+## 1.5.8 (13.08.2026)
+- Add a `README.md` link to the full shortcut list, so it is reachable from the Marketplace page
+
 ## 1.5.7 (13.08.2026)
 - Exclude `docs/` from the published package (8 files → 7, 65.78 KB → 64.07 KB). Docs remain on GitHub; README links point there.
 
