@@ -17,7 +17,8 @@ test/**
 # Repo-only dotfiles
 .gitignore
 
-# Contributor docs; README links to these are rewritten to GitHub URLs at
-# package time, so excluding the files does not break the Marketplace page.
-docs/HOW-TO-CREATE-NEW-SHORTCUT.md
-docs/TESTING.md
+# Docs live on GitHub, not in the package. Relative README links are
+# rewritten to absolute GitHub URLs at package time, so the Marketplace
+# page is unaffected. SHORTCUTS.md stays in the repo: the structural
+# tests check it against the keybindings in package.json.
+docs/**

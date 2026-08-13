@@ -1,3 +1,6 @@
+## 1.5.7 (13.08.2026)
+- Exclude `docs/` from the published package (8 files → 7, 65.78 KB → 64.07 KB). Docs remain on GitHub; README links point there.
+
 ## 1.5.6 (13.08.2026)
 - Exclude `.gitignore` and contributor docs from the published package (11 files → 8, 67.76 KB → 65.73 KB)
 
