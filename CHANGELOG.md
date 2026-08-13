@@ -1,3 +1,9 @@
+## 1.5.3 (13.08.2026)
+- Chore: bump `@vscode/test-electron` from 2.5.2 to 3.1.0 (fixes macOS integration test launch on VS Code 1.110+)
+- Chore: bump `js-yaml` from 4.1.1 to 4.3.1
+- Chore: bump `brace-expansion` from 2.1.0 to 2.1.4
+- CI: bump `actions/checkout` from 6 to 7 and `actions/setup-node` from 6 to 7
+
 ## 1.5.2 (08.04.2026)
 - Fix: use glob pattern for tag filter instead of regex in publish workflow
 
