@@ -13,3 +13,11 @@ CLAUDE.md
 
 # Tests are not part of the extension
 test/**
+
+# Repo-only dotfiles
+.gitignore
+
+# Contributor docs; README links to these are rewritten to GitHub URLs at
+# package time, so excluding the files does not break the Marketplace page.
+docs/HOW-TO-CREATE-NEW-SHORTCUT.md
+docs/TESTING.md
