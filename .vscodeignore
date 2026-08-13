@@ -1,0 +1,15 @@
+# This is a keymap-only extension: the shipped package needs the manifest,
+# icon, and the docs the Marketplace renders. Everything below is repo-side
+# tooling that end users never load.
+
+# CI and repo templates
+.github/**
+
+# Editor workspace config
+.vscode/**
+
+# Agent instructions
+CLAUDE.md
+
+# Tests are not part of the extension
+test/**

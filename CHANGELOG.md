@@ -1,3 +1,6 @@
+## 1.5.5 (13.08.2026)
+- Add `.vscodeignore` so the published package no longer ships `CLAUDE.md`, `test/`, `.github/`, or `.vscode/` (24 files → 11, 78.01 KB → 67.67 KB)
+
 ## 1.5.4 (13.08.2026)
 - CI: publish via pinned `@vscode/vsce` and `ovsx` CLIs instead of `HaaLeo/publish-vscode-extension`, which targets the deprecated Node 20 runtime
 - CI: package the extension once and publish the same `.vsix` to both registries
