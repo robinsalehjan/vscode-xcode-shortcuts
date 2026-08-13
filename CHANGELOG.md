@@ -1,3 +1,6 @@
+## 1.5.6 (13.08.2026)
+- Exclude `.gitignore` and contributor docs from the published package (11 files → 8, 67.76 KB → 65.73 KB)
+
 ## 1.5.5 (13.08.2026)
 - Add `.vscodeignore` so the published package no longer ships `CLAUDE.md`, `test/`, `.github/`, or `.vscode/` (24 files → 11, 78.01 KB → 67.67 KB)
 
