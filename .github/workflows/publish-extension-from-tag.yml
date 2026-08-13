@@ -22,13 +22,16 @@ jobs:
           node-version: 22
           cache: 'npm'
       - run: npm install
+      # vsce/ovsx are pinned here rather than declared as devDependencies so the
+      # test matrix does not install them. Bump these two versions by hand.
+      - name: Package extension
+        run: npx --yes @vscode/vsce@3.9.2 package --out extension.vsix
       - name: Publish to Visual Studio Marketplace
-        uses: HaaLeo/publish-vscode-extension@v2
-        with:
-          pat: ${{ secrets.VS_MARKETPLACE_TOKEN }}
-          registryUrl: https://marketplace.visualstudio.com
+        env:
+          VSCE_PAT: ${{ secrets.VS_MARKETPLACE_TOKEN }}
+        run: npx --yes @vscode/vsce@3.9.2 publish --packagePath extension.vsix
       - name: Publish to Open VSX Registry
         if: env.OPEN_VSX_TOKEN != ''
-        uses: HaaLeo/publish-vscode-extension@v2
-        with:
-          pat: ${{ env.OPEN_VSX_TOKEN }}
+        env:
+          OVSX_PAT: ${{ env.OPEN_VSX_TOKEN }}
+        run: npx --yes ovsx@1.1.1 publish extension.vsix
