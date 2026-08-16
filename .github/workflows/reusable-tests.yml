@@ -1,7 +1,7 @@
 on:
   workflow_call:
 
-name: Reusable test suite
+name: ♻️ Reusable test suite
 permissions:
   contents: read
 jobs:
