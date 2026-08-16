@@ -4,7 +4,7 @@ on:
   pull_request:
     branches: [main]
 
-name: Tests
+name: 🧪 Tests
 permissions:
   contents: read
 jobs:
