@@ -9,7 +9,7 @@
 .vscode/**
 
 # Agent instructions
-CLAUDE.md
+AGENTS.md
 
 # Tests are not part of the extension
 test/**
